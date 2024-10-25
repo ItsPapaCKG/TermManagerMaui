@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\13876\\source\\repos\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj": {}
+    "C:\\Users\\GrantP\\Documents\\WGU\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj": {}
   },
   "projects": {
-    "C:\\Users\\13876\\source\\repos\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj": {
+    "C:\\Users\\GrantP\\Documents\\WGU\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\13876\\source\\repos\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj",
+        "projectUniqueName": "C:\\Users\\GrantP\\Documents\\WGU\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj",
         "projectName": "C971 Grant Putnam",
-        "projectPath": "C:\\Users\\13876\\source\\repos\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj",
-        "packagesPath": "C:\\Users\\13876\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\13876\\source\\repos\\D971\\Part C\\C971 Grant Putnam\\obj\\",
+        "projectPath": "C:\\Users\\GrantP\\Documents\\WGU\\D971\\Part C\\C971 Grant Putnam\\C971 Grant Putnam.csproj",
+        "packagesPath": "C:\\Users\\GrantP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\GrantP\\Documents\\WGU\\D971\\Part C\\C971 Grant Putnam\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\13876\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\GrantP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
