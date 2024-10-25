@@ -178,3 +178,18 @@ C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windo
 C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.csproj.AssemblyReference.cache
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauiimage.inputs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauifont.inputs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauisplash.inputs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauimanifest.stamp
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.i.cs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.cs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlTypeInfo.g.cs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\refint\C971 Grant Putnam.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.pdb

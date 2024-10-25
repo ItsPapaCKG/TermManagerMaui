@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("C971 Grant Putnam")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+a2f93fd9d5aa252370c9ac8676948f876b19a4f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+bfcace4891166bb0887f9a22c33b4fdef3c3d782")]
 [assembly: System.Reflection.AssemblyProductAttribute("C971 Grant Putnam")]
 [assembly: System.Reflection.AssemblyTitleAttribute("C971 Grant Putnam")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
