@@ -26,6 +26,8 @@ namespace C971_Grant_Putnam.Models
             conn = new SQLiteAsyncConnection(dbfilepath);
 
             await conn.CreateTableAsync<Course>().ConfigureAwait(false);
+            await conn.CreateTableAsync<Term>().ConfigureAwait(false);
+            await conn.CreateTableAsync<Assessment>().ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<object>> GetTerms()
@@ -164,6 +166,15 @@ namespace C971_Grant_Putnam.Models
 
                 await conn.UpdateAsync(assessmentQuery).ConfigureAwait(false);
             }
+        }
+
+        public async void LoadSampleData()
+        {
+            await Init();
+
+            Term term1 = new Term { Name = "Term 1", Start = DateTime.Now, End = DateTime.Now, Notify = false };
+
+            await conn.InsertAsync(term1).ConfigureAwait(false);
         }
     }
 }
