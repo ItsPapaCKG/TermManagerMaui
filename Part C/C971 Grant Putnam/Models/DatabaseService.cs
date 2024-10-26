@@ -1,5 +1,6 @@
 ﻿
 using SQLite;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -30,11 +31,12 @@ namespace C971_Grant_Putnam.Models
             await conn.CreateTableAsync<Assessment>().ConfigureAwait(false);
         }
 
-        public async Task<IEnumerable<object>> GetTerms()
+        public async Task<ObservableCollection<Term>> GetTerms()
         {
             await Init().ConfigureAwait(false);
 
-            var data = await conn.Table<Term>().ToListAsync().ConfigureAwait(false);
+            var d = await conn.Table<Term>().ToListAsync().ConfigureAwait(false);
+            var data = new ObservableCollection<Term>(d);
 
             return data;
         }
@@ -69,6 +71,17 @@ namespace C971_Grant_Putnam.Models
                 await conn.UpdateAsync(termQuery).ConfigureAwait(false);
             }
         }
+
+        public async Task<ObservableCollection<Course>> GetCourses()
+        {
+            await Init().ConfigureAwait(false);
+
+            var d = await conn.Table<Course>().ToListAsync().ConfigureAwait(false);
+            var data = new ObservableCollection<Course>();
+
+            return data;
+        }
+
         public async Task<IEnumerable<Course>> GetCourses(int termId)
         {
             await Init().ConfigureAwait(false);

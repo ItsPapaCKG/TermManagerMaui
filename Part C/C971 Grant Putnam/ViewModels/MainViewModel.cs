@@ -15,15 +15,30 @@ namespace C971_Grant_Putnam.ViewModels
 
         public string TestBinding;
 
-        public IEnumerable<Term> terms;
+        private ObservableCollection<Term> terms;
 
-        private ObservableCollection<string> termNames;
-
-        public ObservableCollection<string> TermNames
+        public ObservableCollection<Term> Terms
         {
-            get { return termNames; }
-            set { termNames = value; OnPropertyChanged(); }
+            get { return terms; }
+            set { terms = value; OnPropertyChanged(); }
         }
+
+        private ObservableCollection<Course> courses;
+
+        public ObservableCollection<Course> Courses
+        {
+            get { return courses; }
+            set { courses = value; }
+        }
+
+        private ObservableCollection<Course> viewedCourses;
+
+        public ObservableCollection<Course> ViewedCourses
+        {
+            get { return viewedCourses; }
+            set { viewedCourses = value; }
+        }
+
 
 
         public MainViewModel(DatabaseService db)
@@ -36,14 +51,8 @@ namespace C971_Grant_Putnam.ViewModels
 
         public async void PopulateData()
         {
-            terms = (List<Term>)await databaseService.GetTerms();
-            TermNames = new ObservableCollection<string>();
-
-
-            foreach (Term term in terms)
-            {
-                TermNames.Add(term.Name);
-            }
+            Terms = await databaseService.GetTerms();
+            Courses = await databaseService.GetCourses();
         }
     }
 }

@@ -8,7 +8,6 @@
     Title="C971_Grant_Putnam">
 
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
