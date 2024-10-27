@@ -57,7 +57,7 @@ namespace C971_Grant_Putnam.Models
             await conn.DeleteAsync(termId).ConfigureAwait(false);
         }
 
-        public async Task UpdateTerm(int id, string name, DateTime start, DateTime end)
+        public async Task UpdateTerm(int id, string name, DateTime start, DateTime end, bool notify)
         {
             await Init().ConfigureAwait(false);
 
@@ -68,6 +68,7 @@ namespace C971_Grant_Putnam.Models
                 termQuery.Name = name;
                 termQuery.Start = start;
                 termQuery.End = end;
+                termQuery.Notify = notify;
 
                 await conn.UpdateAsync(termQuery).ConfigureAwait(false);
             }
@@ -224,6 +225,9 @@ namespace C971_Grant_Putnam.Models
                     new Course { Name = "Basket Weaving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
                     new Course { Name = "Scuba Diving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
                     new Course { Name = "Calculus I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
+                    new Course { Name = "Cat Class I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
+                    new Course { Name = "Woodworking", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
+                    new Course { Name = "Banking", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
                     new Course { Name = "Beaching I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2 },
                     new Course { Name = "Surfing I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2 },
                     new Course { Name = "Cats I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2 },

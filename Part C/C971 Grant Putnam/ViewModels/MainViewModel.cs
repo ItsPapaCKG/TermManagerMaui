@@ -104,8 +104,12 @@ namespace C971_Grant_Putnam.ViewModels
 
         public async void PopulateData()
         {
-            await databaseService.LoadSampleData();
 
+
+            if (CheckFirstLaunch())
+            {
+                await databaseService.LoadSampleData();
+            }
             //Terms = await databaseService.GetTerms();
             var terms = await databaseService.GetTerms();
             //Courses = await databaseService.GetCourses();
@@ -134,6 +138,20 @@ namespace C971_Grant_Putnam.ViewModels
         public async void SwitchToTerm(int termId)
         {
             SelectedTerm = Terms.FirstOrDefault(t => t.Id == termId) is not null ? Terms.FirstOrDefault(t => t.Id == termId) : SelectedTerm;
+        }
+
+        public bool CheckFirstLaunch()
+        {
+            string k = "FirstLaunch";
+
+            bool hasLaunchedBefore = Preferences.Get(k, false);
+
+            if (!hasLaunchedBefore)
+            {
+                Preferences.Set(k, true);
+            }
+
+            return !hasLaunchedBefore;
         }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
              x:Class="C971_Grant_Putnam.MainPage">
 
-    <Grid RowDefinitions="5*,10*,75*,10*">
+    <Grid RowDefinitions="5*,10*,75*,10*" Padding="10">
 
         <Grid Grid.Row="0">
             <Grid ColumnDefinitions="*,Auto">
@@ -65,9 +65,8 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2" BackgroundColor="Red">
+        <Grid Grid.Row="2">
             <CollectionView
-                BackgroundColor="Yellow"
                 Margin="0"
                 ItemsSource="{Binding ViewedCourses}">
                 <CollectionView.ItemTemplate>

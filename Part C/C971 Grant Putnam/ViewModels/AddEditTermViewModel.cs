@@ -63,6 +63,7 @@ namespace C971_Grant_Putnam.ViewModels
                 SelectedTermName = SelectedTerm.Name;
                 SelectedStartDate = SelectedTerm.Start;
                 SelectedEndDate = SelectedTerm.End;
+                SelectedNotify = SelectedTerm.Notify;
             }
         }
 
@@ -71,7 +72,7 @@ namespace C971_Grant_Putnam.ViewModels
         {
             var t = new Term { Id=term.Id, Name = SelectedTermName, Start = SelectedStartDate, End = SelectedEndDate, Notify = SelectedNotify };
 
-            await database.UpdateTerm(term.Id, SelectedTermName, SelectedStartDate, SelectedEndDate);
+            await database.UpdateTerm(term.Id, SelectedTermName, SelectedStartDate, SelectedEndDate, SelectedNotify);
 
             WeakReferenceMessenger.Default.Send(new UpdateTermMessage(t));
 
