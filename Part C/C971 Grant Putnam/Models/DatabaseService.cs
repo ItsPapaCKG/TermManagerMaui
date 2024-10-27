@@ -1,6 +1,7 @@
 ﻿
 using SQLite;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -77,18 +78,19 @@ namespace C971_Grant_Putnam.Models
             await Init().ConfigureAwait(false);
 
             var d = await conn.Table<Course>().ToListAsync().ConfigureAwait(false);
-            var data = new ObservableCollection<Course>();
+            var data = new ObservableCollection<Course>(d);
 
             return data;
         }
 
-        public async Task<IEnumerable<Course>> GetCourses(int termId)
+        public async Task<ObservableCollection<Course>> GetCourses(int termId)
         {
             await Init().ConfigureAwait(false);
 
             var query = await conn.Table<Course>().Where(c => c.TermId == termId).ToListAsync().ConfigureAwait(false);
+            var q = new ObservableCollection<Course>(query);
 
-            return query;
+            return q;
         }
 
         public async Task<Course> GetCourse(int courseId)
@@ -138,13 +140,14 @@ namespace C971_Grant_Putnam.Models
             }
         }
 
-        public async Task<IEnumerable<Assessment>> GetAssessments(int courseId)
+        public async Task<ObservableCollection<Assessment>> GetAssessments(int courseId)
         {
             await Init().ConfigureAwait(false);
 
             var query = await conn.Table<Assessment>().Where(a => a.CourseId == courseId).ToListAsync().ConfigureAwait(false);
+            var q = new ObservableCollection<Assessment>(query);
 
-            return query;
+            return q;
         }
 
         public async Task AddAssessment(string name, DateTime start, DateTime end, string type, int courseId, bool notify)
@@ -181,13 +184,69 @@ namespace C971_Grant_Putnam.Models
             }
         }
 
-        public async void LoadSampleData()
+        public async Task LoadSampleData()
         {
             await Init();
 
-            Term term1 = new Term { Name = "Term 1", Start = DateTime.Now, End = DateTime.Now, Notify = false };
+            try
+            {
+                await conn.RunInTransactionAsync(conn =>
+                {
+                    conn.Execute("DELETE FROM term;");
+                    conn.Execute("DELETE FROM course;");
+                    conn.Execute("DELETE FROM assessment;");
 
-            await conn.InsertAsync(term1).ConfigureAwait(false);
+                    conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'term';");
+                    conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'course';");
+                    conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'assessment';");
+                });
+
+                await conn.ExecuteAsync("VACUUM;");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Debug.WriteLine("---Failed to clear Database!---");
+            }
+
+            try
+            {
+                await conn.RunInTransactionAsync(conn => {
+                    var terms = new[]
+                    {
+                    new Term { Name = "Spring Term", Start = DateTime.Now, End = DateTime.Now, Notify = false },
+                    new Term { Name = "Summer Term", Start = new DateTime(2024, 12, 04), End = DateTime.Now, Notify = false },
+                    new Term { Name = "Fall Term", Start = DateTime.Now, End = DateTime.Now, Notify = false },
+                    new Term { Name = "Winter Term", Start = DateTime.Now, End = DateTime.Now, Notify = false }
+                };
+
+                    var courses = new[] {
+                    new Course { Name = "Basket Weaving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
+                    new Course { Name = "Scuba Diving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
+                    new Course { Name = "Calculus I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1 },
+                    new Course { Name = "Beaching I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2 },
+                    new Course { Name = "Surfing I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2 },
+                    new Course { Name = "Cats I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2 },
+                    new Course { Name = "Pumpkins I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 3 },
+                    new Course { Name = "Leaves I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 3 },
+                    new Course { Name = "Bank Fraud I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 3 },
+                    new Course { Name = "TestTaking III", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4 },
+                    new Course { Name = "Bus Driving I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4 },
+                    new Course { Name = "Life II", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4 }
+                };
+
+                    foreach (var term in terms)
+                    {
+                        conn.Insert(term);
+                    }
+
+                    foreach (var course in courses)
+                    {
+                        conn.Insert(course);
+                    }
+                });
+            } catch (Exception ex) { Debug.WriteLine(ex); Debug.WriteLine("---Failed to load database.---"); }
+
         }
     }
 }

@@ -1,58 +1,139 @@
 ﻿using C971_Grant_Putnam.Models;
+using C971_Grant_Putnam.Views;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Messaging;
+
 
 namespace C971_Grant_Putnam.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+
+    [INotifyPropertyChanged]
+    public partial class MainViewModel
     {
         private DatabaseService databaseService;
 
-        public string TestBinding;
+        public ObservableCollection<Term> Terms { get; } = new();
 
-        private ObservableCollection<Term> terms;
+        public ObservableCollection<Course> Courses { get; } = new();
 
-        public ObservableCollection<Term> Terms
-        {
-            get { return terms; }
-            set { terms = value; OnPropertyChanged(); }
-        }
+        public ObservableCollection<Course>? ViewedCourses { get; } = new();
 
-        private ObservableCollection<Course> courses;
+        [ObservableProperty]
+        private Term selectedTerm;
 
-        public ObservableCollection<Course> Courses
-        {
-            get { return courses; }
-            set { courses = value; }
-        }
+        [ObservableProperty]
+        private string selectedTermDateRange;
 
-        private ObservableCollection<Course> viewedCourses;
-
-        public ObservableCollection<Course> ViewedCourses
-        {
-            get { return viewedCourses; }
-            set { viewedCourses = value; }
-        }
-
-
+        private readonly WeakReferenceMessenger _messenger;
 
         public MainViewModel(DatabaseService db)
         {
             databaseService = db;
-            databaseService.LoadSampleData();
 
             PopulateData();
+
+            WeakReferenceMessenger.Default.Register<UpdateTermMessage>(this, (r, m) =>
+            {
+                //SelectedTerm = m.Value;
+                Term updatedTerm = m.Value;
+
+                var index = Terms.IndexOf(Terms.FirstOrDefault(term => term.Id == updatedTerm.Id));
+
+                if (index >= 0)
+                {
+                    Terms[index] = updatedTerm;
+                    SelectedTerm = updatedTerm;
+
+                    ViewedCourses.Clear();
+                    SwitchTerm(updatedTerm);
+                }
+
+            });
+
+        }
+
+        [RelayCommand]
+        async Task GoToEditTermAsync(Term term)
+        {
+            if (term is null)
+            {
+
+                return;
+            }
+
+            await Shell.Current.GoToAsync($"{nameof(AddEditTerm)}", true,
+                new Dictionary<string, object>
+                {
+                    { "SelectedTerm", term},
+                    {"EditMode", true }
+                }
+                );
+        }
+
+        [RelayCommand]
+        private async void SwitchTerm(Term term)
+        {
+            if (term == SelectedTerm && ViewedCourses.Count != 0)
+                return;
+
+            SelectedTerm = term;
+            ViewedCourses.Clear();
+
+            App.Current.Dispatcher.Dispatch(() =>
+            {
+
+                var list = new List<Course>();
+
+                list = Courses.Where(c => c.TermId == term.Id).ToList();
+
+                SelectedTermDateRange = SelectedTerm.Start.ToString("MM/dd/yyyy") + " - " + SelectedTerm.End.ToString("MM/dd/yyyy");
+
+                foreach (var course in list)
+                {
+                    ViewedCourses.Add(course);
+                }
+            });
         }
 
         public async void PopulateData()
         {
-            Terms = await databaseService.GetTerms();
-            Courses = await databaseService.GetCourses();
+            await databaseService.LoadSampleData();
+
+            //Terms = await databaseService.GetTerms();
+            var terms = await databaseService.GetTerms();
+            //Courses = await databaseService.GetCourses();
+            var courses = await databaseService.GetCourses();
+            
+            foreach (var term in terms)
+            {
+                Terms.Add(term);
+            }
+
+            foreach (var course in courses)
+            {
+                Courses.Add(course);
+            }
+
+            SelectedTerm = Terms[0];
+            App.Current.Dispatcher.Dispatch(() =>
+            {
+                ViewedCourses.Clear();
+                SwitchTerm(SelectedTerm);
+
+            });
+            
+        }
+
+        public async void SwitchToTerm(int termId)
+        {
+            SelectedTerm = Terms.FirstOrDefault(t => t.Id == termId) is not null ? Terms.FirstOrDefault(t => t.Id == termId) : SelectedTerm;
         }
     }
 }

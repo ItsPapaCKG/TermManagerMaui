@@ -1,5 +1,7 @@
 ﻿using C971_Grant_Putnam.Models;
 using C971_Grant_Putnam.ViewModels;
+using C971_Grant_Putnam.Views;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
 
 namespace C971_Grant_Putnam
@@ -18,6 +20,8 @@ namespace C971_Grant_Putnam
                 });
                 
                 builder.Services.AddSingleton<DatabaseService>();
+                builder.Services.AddTransient<AddEditTermViewModel>();
+                builder.Services.AddTransient<AddEditTerm>();
                 builder.Services.AddSingleton<MainViewModel>();
                 builder.Services.AddSingleton<MainPage>();
 

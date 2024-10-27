@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:C971_Grant_Putnam.Models"
+             xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
+             x:Class="C971_Grant_Putnam.MainPage">
+
+    <Grid RowDefinitions="5*,10*,75*,10*">
+
+        <Grid Grid.Row="0">
+            <Grid ColumnDefinitions="*,Auto">
+                
+            
+                <CollectionView HorizontalOptions="Fill"
+                                BackgroundColor="LightGray"
+                                Grid.Column="0"
+                                Margin="0"
+                                ItemsLayout="HorizontalList"
+                                ItemsSource="{Binding Terms}"
+                                SelectedItem="{Binding SelectedTerm, Mode=TwoWay}"
+                                SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Term">
+                            <Frame Padding="0" Margin="2.5" BorderColor="Transparent" CornerRadius="50" HasShadow="True">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=SwitchTermCommand}"/>
+                                </Frame.GestureRecognizers>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Gray" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Label Padding="0" Margin="10,0,10,0" Text="{Binding Name}" VerticalOptions="Center"></Label>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+            
+                </CollectionView>
+
+                <Button Grid.Column="1" WidthRequest="50" CornerRadius="0" Text="+" FontSize="15" VerticalOptions="Center"></Button>
+            </Grid>
+        </Grid>
+
+        <Grid ColumnDefinitions="*,Auto" Grid.Row="1">
+            <Label Grid.Column="0" Text="{Binding SelectedTermDateRange}" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            <Grid RowDefinitions="*,*" Grid.Column="1" Margin="50,0,50,0" VerticalOptions="Center">
+                <Image Grid.Row="0" Source="pencil.png" HeightRequest="25" WidthRequest="25" Grid.Column="1"/>
+                <Label Grid.Row="1">Edit Term</Label>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer CommandParameter="{Binding SelectedTerm}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=GoToEditTermCommand}"/>
+                </Grid.GestureRecognizers>
+                
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" BackgroundColor="Red">
+            <CollectionView
+                BackgroundColor="Yellow"
+                Margin="0"
+                ItemsSource="{Binding ViewedCourses}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Course">
+                        <Frame BackgroundColor="Green">
+                            
+                            <Grid RowDefinitions="*,*,*">
+                                <Label Text="{Binding Name}" Grid.Row="0"></Label>
+                                <Label Text="{Binding Start}" Grid.Row="1"></Label>
+                                <Label Text="{Binding End}" Grid.Row="2"></Label>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Button Text="+" WidthRequest="50" HeightRequest="50" CornerRadius="50"></Button>
+        </Grid>
+    </Grid>
+
+</ContentPage>

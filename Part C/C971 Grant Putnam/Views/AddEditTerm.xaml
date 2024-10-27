@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Grant_Putnam.Views.AddEditTerm"
+             Title="AddEditTerm">
+    <VerticalStackLayout>
+        <Entry Placeholder="Term Name..." Text="{Binding SelectedTermName, Mode=TwoWay}" TextChanged="Entry_TextChanged"></Entry>
+        <DatePicker Date="{Binding SelectedStartDate}"/>
+        <DatePicker Date="{Binding SelectedEndDate}"/>
+        <Grid ColumnDefinitions="Auto,*">
+            <CheckBox Grid.Column="0" IsChecked="{Binding SelectedNotify}"></CheckBox>
+            <Label Grid.Column="1" VerticalOptions="Center">Notify me about start and end dates</Label>
+        </Grid>
+
+        <Button Text="Submit" Command="{Binding SubmitTermChangesCommand}" CommandParameter="{Binding SelectedTerm}"></Button>
+    </VerticalStackLayout>
+</ContentPage>
