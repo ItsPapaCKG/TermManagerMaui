@@ -15,7 +15,8 @@ namespace C971_Grant_Putnam.ViewModels
 {
 
     [INotifyPropertyChanged]
-    public partial class MainViewModel
+    [QueryProperty("ShouldRefresh","ShouldRefresh")]
+    public partial class MainViewModel : IQueryAttributable
     {
         private DatabaseService databaseService;
 
@@ -27,6 +28,9 @@ namespace C971_Grant_Putnam.ViewModels
 
         [ObservableProperty]
         private Term selectedTerm;
+
+        [ObservableProperty]
+        private bool shouldRefresh;
 
         [ObservableProperty]
         private string selectedTermDateRange;
@@ -113,11 +117,26 @@ namespace C971_Grant_Putnam.ViewModels
             );
         }
 
+        public async Task RefreshCourses()
+        {
+            var courses = await databaseService.GetCourses();
+
+            Courses.Clear();
+
+            foreach (var c in courses)
+            {
+                Courses.Add(c);
+            }
+
+            SwitchTerm(SelectedTerm);
+        }
+
         public async void PopulateData()
         {
+            Terms.Clear();
+            Courses.Clear();
 
-
-            if (true /*CheckFirstLaunch()*/)
+            if (CheckFirstLaunch())
             {
                 await databaseService.LoadSampleData();
             }
@@ -136,14 +155,18 @@ namespace C971_Grant_Putnam.ViewModels
                 Courses.Add(course);
             }
 
-            SelectedTerm = Terms[0];
+            if (SelectedTerm is null)
+            {
+                SelectedTerm = Terms[0];
+            }
+
             App.Current.Dispatcher.Dispatch(() =>
             {
                 ViewedCourses.Clear();
                 SwitchTerm(SelectedTerm);
 
             });
-            
+
         }
 
         public async void SwitchToTerm(int termId)
@@ -163,6 +186,14 @@ namespace C971_Grant_Putnam.ViewModels
             }
 
             return !hasLaunchedBefore;
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.ContainsKey("ShouldRefresh"))
+            {
+                PopulateData();
+            }
         }
     }
 }

@@ -334,6 +334,27 @@
         <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.EditMode">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.editMode"/>
         </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.Name">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.name"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.NameError">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.nameError"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.Phone">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.phone"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.PhoneError">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.phoneError"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.Email">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.email"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.EmailError">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.emailError"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.ValidationErrors">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.validationErrors"/>
+        </member>
         <member name="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.saveChangesToCourseCommand">
             <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.SaveChangesToCourseCommand"/>.</summary>
         </member>
@@ -1011,6 +1032,9 @@
         <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.SelectedTerm">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.MainViewModel.selectedTerm"/>
         </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.ShouldRefresh">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.MainViewModel.shouldRefresh"/>
+        </member>
         <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.SelectedTermDateRange">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.MainViewModel.selectedTermDateRange"/>
         </member>
@@ -1390,6 +1414,27 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EditMode">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EditMode" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Name">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Name" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NameError">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NameError" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PhoneError">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PhoneError" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Email">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Email" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EmailError">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EmailError" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ValidationErrors">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ValidationErrors" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTerm">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTerm" generated properties.</summary>
         </member>
@@ -1404,6 +1449,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedNotify">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedNotify" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShouldRefresh">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShouldRefresh" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTermDateRange">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTermDateRange" generated properties.</summary>

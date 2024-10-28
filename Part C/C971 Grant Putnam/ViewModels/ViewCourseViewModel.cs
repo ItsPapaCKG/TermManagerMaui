@@ -30,6 +30,7 @@ namespace C971_Grant_Putnam.ViewModels
             await Shell.Current.GoToAsync($"{nameof(AddEditCourse)}", true, 
                 new Dictionary<string, object> {
                     {"SelectedCourse", course},
+                    {"EditMode", true}
                 });
         }
 

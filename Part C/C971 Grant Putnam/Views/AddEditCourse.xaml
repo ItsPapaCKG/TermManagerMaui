@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:C971_Grant_Putnam.Models"
              x:Class="C971_Grant_Putnam.Views.AddEditCourse"
              Title="AddEditCourse">
+    <ContentPage.Resources>
+        <model:ContentToVisibilityConverter x:Key="EmptyStringConverter"/>
+    </ContentPage.Resources>
+    
     <Grid RowDefinitions="Auto,Auto,40*">
-        <Grid Grid.Row="0" ColumnDefinitions="60*,40*" BackgroundColor="DarkSlateGrey" Padding="30">
+        <Grid Grid.Row="0" ColumnDefinitions="60*,40*" BackgroundColor="DarkSlateGrey" Padding="20">
             <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="0">
-                <Entry TextColor="White" FontAttributes="Bold" Text="{Binding CourseEdit.Name}"></Entry>
-                <DatePicker TextColor="White" Date="{Binding CourseEdit.Start}"></DatePicker>
-                <DatePicker TextColor="White" Date="{Binding CourseEdit.End}"></DatePicker>
+                <Entry TextColor="White" FontAttributes="None" Text="{Binding CourseEdit.Name}"></Entry>
+                <Grid ColumnDefinitions="*,*">
+                    <DatePicker Grid.Column="0" FontAttributes="None" TextColor="White" Date="{Binding CourseEdit.Start}"></DatePicker>
+                    <DatePicker Grid.Column="1" FontAttributes="None" TextColor="White" Date="{Binding CourseEdit.End}"></DatePicker>
+                </Grid>
+                
+                <Picker TextColor="White" FontAttributes="Bold" SelectedItem="{Binding CourseEdit.Status}">
+                    <Picker.Items>
+                        <x:String>In Progress</x:String>
+                        <x:String>Going to Take</x:String>
+                        <x:String>On Hold</x:String>
+                        <x:String>Passed</x:String>
+                    </Picker.Items>
+                </Picker>
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+            <Grid Grid.Column="1" VerticalOptions="Center">
                 <ImageButton Source="check_mark.png" WidthRequest="50" HeightRequest="50" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="2" CommandParameter="{Binding CourseEdit}" Command="{Binding SaveChangesToCourseCommand}"/>
-            </VerticalStackLayout>
+            </Grid>
         </Grid>
 
-        <Grid Grid.Row="1" RowDefinitions="Auto,*">
-            <VerticalStackLayout Padding="30" Grid.Row="1">
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Margin="0">
+            <VerticalStackLayout Padding="10" Grid.Row="1">
                 <Label FontAttributes="Bold,Italic" FontSize="20">Course Instructor Information</Label>
-                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Name" Text="{Binding CourseEdit.Instructor_Name}"></Entry>
-                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Phone" Text="{Binding CourseEdit.Instructor_Phone}"></Entry>
-                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Email" Text="{Binding CourseEdit.Instructor_Email}"></Entry>
+                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Name" Text="{Binding Name, Mode=TwoWay}" TextChanged="Entry_TextChanged"></Entry>
+                <Label TextColor="Red" Padding="0" IsVisible="{Binding NameError, Converter={StaticResource EmptyStringConverter}}" Text="{Binding NameError}"></Label>
+                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Phone" Text="{Binding Phone}" TextChanged="Entry_TextChanged_1"></Entry>
+                <Label TextColor="Red" Padding="0" IsVisible="{Binding Phone, Converter={StaticResource EmptyStringConverter}}" Text="{Binding ValidationErrors[Phone]}"></Label>
+                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Email" Text="{Binding Email}" TextChanged="Entry_TextChanged_2"></Entry>
+                <Label Margin="25,0,0,0" IsVisible="{Binding Email, Converter={StaticResource EmptyStringConverter}}" Padding="0" TextColor="Red" Text="{Binding ValidationErrors[Email]}"></Label>
             </VerticalStackLayout>
         </Grid>
 
@@ -33,8 +52,6 @@
                     <Frame Grid.Row="1">
                         <Editor Text="{Binding CourseEdit.Notes}"/>
                     </Frame>
-
-                    <Button Text="Share Notes" Grid.Row="2" Margin="0,10,0,0"></Button>
                 </Grid>
             </Frame>
         </Grid>

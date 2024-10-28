@@ -9,8 +9,10 @@
         <Grid Grid.Row="0" ColumnDefinitions="*,Auto" BackgroundColor="DarkSlateGrey" Padding="30">
             <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
                 <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Name}"></Label>
-                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Start}"></Label>
-                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.End}"></Label>
+                <Label TextColor="White" FontAttributes="None" Text="{Binding SelectedCourse.Start}"></Label>
+                <Label TextColor="White" FontAttributes="None" Text="{Binding SelectedCourse.End}"></Label>
+                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Status}"></Label>
+                
             </VerticalStackLayout>
 
             <ImageButton Source="pencil.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center"
