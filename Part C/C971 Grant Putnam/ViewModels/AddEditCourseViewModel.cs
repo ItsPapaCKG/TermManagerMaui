@@ -24,7 +24,7 @@ namespace C971_Grant_Putnam.ViewModels
             {
                 SelectedCourse = query["SelectedCourse"] as Course ?? new Course();
 
-                CourseEdit = new Course 
+                CourseEdit = new Course
                 {
                     Id = SelectedCourse.Id,
                     TermId = SelectedCourse.TermId,
@@ -38,8 +38,12 @@ namespace C971_Grant_Putnam.ViewModels
                     Instructor_Email = SelectedCourse.Instructor_Email,
                     Notes = SelectedCourse.Notes
                 };
+
             }
 
         }
+
+        //TODO relay command to save
+        //canexecute to validate fields
     }
 }
