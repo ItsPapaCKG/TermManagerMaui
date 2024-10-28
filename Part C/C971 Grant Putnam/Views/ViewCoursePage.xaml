@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Grant_Putnam.Views.ViewCoursePage"
+             Title="ViewCoursePage">
+    <Grid RowDefinitions="10*,Auto,40*">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" BackgroundColor="DarkSlateGrey" Padding="30">
+            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Name}"></Label>
+                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Start}"></Label>
+                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.End}"></Label>
+            </VerticalStackLayout>
+
+            <ImageButton Source="pencil.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center"
+                         Command="{Binding GoToEditCourseCommand}"
+                         CommandParameter="{Binding SelectedCourse}"/>
+        </Grid>
+
+        <Grid Grid.Row="1" RowDefinitions="Auto,*">
+            <Frame Grid.Row="0" CornerRadius="15" BackgroundColor="LightGray" Margin="10" Padding="0">
+                <Grid ColumnDefinitions="*,*">
+                    <Label Padding="30,10,30,10" FontSize="17" HorizontalOptions="CenterAndExpand" Grid.Column="0">Details</Label>
+                    <Label Padding="30,10,30,10" FontSize="17" HorizontalOptions="CenterAndExpand" Grid.Column="1">Assessments</Label>
+                </Grid>
+            </Frame>
+                <VerticalStackLayout Padding="30" Grid.Row="1">
+                    <Label FontAttributes="Bold,Italic" FontSize="20">Course Instructor Information</Label>
+                    <Label FontSize="17" Margin="20,0,0,0" Text="{Binding SelectedCourse.Instructor_Name}"></Label>
+                    <Label FontSize="17" Margin="20,0,0,0" Text="{Binding SelectedCourse.Instructor_Phone}"></Label>
+                    <Label FontSize="17" Margin="20,0,0,0" Text="{Binding SelectedCourse.Instructor_Email}"></Label>
+            </VerticalStackLayout>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Frame CornerRadius="10" Margin="30,0,30,30" Padding="15">
+                <Grid RowDefinitions="Auto,*,Auto">
+                    <Label Grid.Row="0" Margin="0,0,0,15" FontAttributes="Bold" FontSize="20">Course Notes</Label>
+
+                    <Frame Grid.Row="1">
+                        <Editor IsReadOnly="True" Text="{Binding SelectedCourse.Notes}"/>
+                    </Frame>
+
+                    <Button Text="Share Notes" Grid.Row="2" Margin="0,10,0,0"></Button>
+                </Grid>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

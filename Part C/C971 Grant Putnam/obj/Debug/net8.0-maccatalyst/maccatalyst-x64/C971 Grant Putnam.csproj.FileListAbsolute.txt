@@ -309,3 +309,5 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-mac
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\C971 Grant Putnam.pdb
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\C971 Grant Putnam.genruntimeconfig.cache
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\ref\C971 Grant Putnam.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\x.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\check_mark.png

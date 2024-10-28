@@ -72,7 +72,9 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Course">
                         <Frame BackgroundColor="Green">
-                            
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=ViewCourseInfoAsyncCommand}"/>
+                            </Frame.GestureRecognizers>
                             <Grid RowDefinitions="*,*,*">
                                 <Label Text="{Binding Name}" Grid.Row="0"></Label>
                                 <Label Text="{Binding Start}" Grid.Row="1"></Label>

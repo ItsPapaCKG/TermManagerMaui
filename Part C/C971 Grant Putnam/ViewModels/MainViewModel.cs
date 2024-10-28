@@ -102,11 +102,22 @@ namespace C971_Grant_Putnam.ViewModels
             });
         }
 
+        [RelayCommand]
+        async void ViewCourseInfoAsync(Course course)
+        {
+            await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
+                new Dictionary<string, object>
+                {
+                    { "SelectedCourse", course}
+                }
+            );
+        }
+
         public async void PopulateData()
         {
 
 
-            if (CheckFirstLaunch())
+            if (true /*CheckFirstLaunch()*/)
             {
                 await databaseService.LoadSampleData();
             }
