@@ -178,21 +178,6 @@ C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windo
 C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\13876\source\repos\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.csproj.AssemblyReference.cache
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauiimage.inputs
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauifont.inputs
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauisplash.inputs
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauimanifest.stamp
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.i.cs
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.cs
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlTypeInfo.g.cs
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.dll
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\refint\C971 Grant Putnam.dll
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.pdb
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.exe
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.deps.json
@@ -278,6 +263,18 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-win
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\e_sqlite3.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\Microsoft.Windows.SDK.NET.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\WinRT.Runtime.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.csproj.AssemblyReference.cache
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauiimage.inputs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauifont.inputs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauisplash.inputs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauimanifest.stamp
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.i.cs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.g.cs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlTypeInfo.g.cs
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlSaveStateFile.xml
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png
@@ -287,9 +284,16 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-win
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauifont.stamp
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\notification.scale-100.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\calendar.scale-100.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\notification.scale-100.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\pencil.scale-100.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\check_mark.scale-100.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\x.scale-100.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png
@@ -336,11 +340,6 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-win
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauiimage.stamp
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\mauiimage.outputs
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.AssemblyInfoInputs.cache
@@ -349,6 +348,9 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-win
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.sourcelink.json
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\XamlC.stamp
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Gra.E3BA326C.Up2Date
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\refint\C971 Grant Putnam.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.pdb
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\C971 Grant Putnam.genruntimeconfig.cache
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ref\C971 Grant Putnam.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\priconfig.xml
@@ -367,5 +369,3 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-win
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\check_mark.scale-100.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\x.scale-100.png

@@ -112,6 +112,12 @@ namespace C971_Grant_Putnam.Models
 
             await conn.InsertAsync(c).ConfigureAwait(false);
         }
+        public async Task AddCourse(Course course)
+        {
+            await Init().ConfigureAwait(false);
+
+            await conn.InsertAsync(course).ConfigureAwait(false);
+        }
         public async Task RemoveCourse(int courseId)
         {
             await Init().ConfigureAwait(false);
@@ -139,6 +145,37 @@ namespace C971_Grant_Putnam.Models
 
                 await conn.UpdateAsync(courseQuery).ConfigureAwait(false);
             }
+        }
+
+        public async Task UpdateCourse(int id, Course course)
+        {
+            await Init().ConfigureAwait(false);
+
+            try
+            {
+                var courseQuery = await conn.Table<Course>().FirstOrDefaultAsync(t => t.Id == id).ConfigureAwait(false);
+
+                if (courseQuery != null)
+                {
+                    courseQuery.Name = course.Name;
+                    courseQuery.Start = course.Start;
+                    courseQuery.End = course.End;
+                    courseQuery.Notify = course.Notify;
+                    courseQuery.Status = course.Status;
+                    courseQuery.Instructor_Email = course.Instructor_Email;
+                    courseQuery.Instructor_Phone = course.Instructor_Phone;
+                    courseQuery.Instructor_Name = course.Instructor_Name;
+                    courseQuery.Notes = course.Notes;
+
+                    await conn.UpdateAsync(courseQuery).ConfigureAwait(false);
+                }
+                else
+                {
+                    throw new Exception($"Cannot find course with id {course.Id}");
+                }
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
         }
 
         public async Task<ObservableCollection<Assessment>> GetAssessments(int courseId)

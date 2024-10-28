@@ -18,6 +18,12 @@ namespace C971_Grant_Putnam.ViewModels
         [ObservableProperty]
         private Course selectedCourse;
 
+        [ObservableProperty]
+        private int carouselPosition;
+
+        [ObservableProperty]
+        private Action<int> carouselAction;
+
         [RelayCommand]
         async Task GoToEditCourse(Course course)
         {
@@ -25,6 +31,16 @@ namespace C971_Grant_Putnam.ViewModels
                 new Dictionary<string, object> {
                     {"SelectedCourse", course},
                 });
+        }
+
+        [RelayCommand]
+        async Task SwitchPosition(string position)
+        {
+            int index = Int32.Parse(position);
+
+            CarouselPosition = index;
+
+            CarouselAction(index);
         }
 
     }

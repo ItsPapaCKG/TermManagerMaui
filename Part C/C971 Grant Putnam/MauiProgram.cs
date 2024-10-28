@@ -26,6 +26,7 @@ namespace C971_Grant_Putnam
                 builder.Services.AddTransient<ViewCourseViewModel>();
                 builder.Services.AddTransient<AddEditCourseViewModel>();
                 builder.Services.AddTransient<AddEditCourse>();
+                //builder.Services.AddTransient<CourseDetails>();
                 builder.Services.AddSingleton<MainViewModel>();
                 builder.Services.AddSingleton<MainPage>();
 

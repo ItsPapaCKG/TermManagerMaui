@@ -12,7 +12,7 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
-                <ImageButton Source="check_mark.png" WidthRequest="50" HeightRequest="50" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="2"/>
+                <ImageButton Source="check_mark.png" WidthRequest="50" HeightRequest="50" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="2" CommandParameter="{Binding CourseEdit}" Command="{Binding SaveChangesToCourseCommand}"/>
             </VerticalStackLayout>
         </Grid>
 

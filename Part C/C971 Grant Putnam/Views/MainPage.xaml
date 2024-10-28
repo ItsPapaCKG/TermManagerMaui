@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:C971_Grant_Putnam.Models"
              xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
-             x:Class="C971_Grant_Putnam.MainPage">
+             x:Class="C971_Grant_Putnam.Views.MainPage">
 
     <Grid RowDefinitions="5*,10*,75*,10*" Padding="10">
 

@@ -1,6 +1,6 @@
 ﻿using C971_Grant_Putnam.ViewModels;
 
-namespace C971_Grant_Putnam
+namespace C971_Grant_Putnam.Views
 {
     public partial class MainPage : ContentPage
     {
