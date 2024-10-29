@@ -37,10 +37,10 @@
                 <Label FontAttributes="Bold,Italic" FontSize="20">Course Instructor Information</Label>
                 <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Name" Text="{Binding Name, Mode=TwoWay}" TextChanged="Entry_TextChanged"></Entry>
                 <Label TextColor="Red" Padding="0" IsVisible="{Binding NameError, Converter={StaticResource EmptyStringConverter}}" Text="{Binding NameError}"></Label>
-                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Phone" Text="{Binding Phone}" TextChanged="Entry_TextChanged_1"></Entry>
-                <Label TextColor="Red" Padding="0" IsVisible="{Binding Phone, Converter={StaticResource EmptyStringConverter}}" Text="{Binding ValidationErrors[Phone]}"></Label>
+                <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Phone" Text="{Binding Phone, Mode=TwoWay}" TextChanged="Entry_TextChanged_1"></Entry>
+                <Label TextColor="Red" Padding="0" IsVisible="{Binding PhoneError, Converter={StaticResource EmptyStringConverter}}" Text="{Binding PhoneError}"></Label>
                 <Entry FontSize="17" Margin="20,0,0,0" Placeholder="Instructor Email" Text="{Binding Email}" TextChanged="Entry_TextChanged_2"></Entry>
-                <Label Margin="25,0,0,0" IsVisible="{Binding Email, Converter={StaticResource EmptyStringConverter}}" Padding="0" TextColor="Red" Text="{Binding ValidationErrors[Email]}"></Label>
+                <Label Margin="25,0,0,0" IsVisible="{Binding EmailError, Converter={StaticResource EmptyStringConverter}}" Padding="0" TextColor="Red" Text="{Binding EmailError}"></Label>
             </VerticalStackLayout>
         </Grid>
 

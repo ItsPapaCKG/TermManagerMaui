@@ -13,7 +13,7 @@ namespace C971_Grant_Putnam.Models
         {
             if (value is string s)
             {
-                return string.IsNullOrWhiteSpace(s);
+                return !string.IsNullOrWhiteSpace(s);
             }
 
             return false;

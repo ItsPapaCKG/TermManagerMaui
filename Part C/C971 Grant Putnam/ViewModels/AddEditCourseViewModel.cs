@@ -139,6 +139,7 @@ namespace C971_Grant_Putnam.ViewModels
         //canexecute to validate fields
         public bool CanSaveChanges()
         {
+
             var errorFound = false;
 
             if (Name is null || string.IsNullOrWhiteSpace(Name))
@@ -160,6 +161,13 @@ namespace C971_Grant_Putnam.ViewModels
                 errorFound = true;
                 EmailError = "Instructor email cannot be blank.";
                 OnPropertyChanged(nameof(EmailError));
+            }
+
+            if (!errorFound)
+            {
+                NameError = "";
+                EmailError = "";
+                PhoneError = "";
             }
 
             return !errorFound;
