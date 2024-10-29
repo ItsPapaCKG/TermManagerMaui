@@ -68,6 +68,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.Co
 build_metadata.AdditionalFiles.TargetPath = Views\CourseDetails.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\CourseDetails.xaml
 
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/EditAssessments.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.EditAssessments.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\EditAssessments.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\EditAssessments.xaml
+
 [C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.MainPage.xaml

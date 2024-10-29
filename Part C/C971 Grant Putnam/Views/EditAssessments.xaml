@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:C971_Grant_Putnam.Models"
+             xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
+             x:Class="C971_Grant_Putnam.Views.EditAssessments"
+             Title="EditAssessments">
+    <ContentPage.Resources>
+        <model:ContentToVisibilityConverter x:Key="EmptyStringConverter"/>
+        <model:StartConverter x:Key="StartConverter"/>
+        <model:EndConverter x:Key="EndConverter"/>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="0" ColumnDefinitions="60*,40*" BackgroundColor="DarkSlateGrey" Padding="20">
+            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="0">
+                <Label FontAttributes="Bold" FontSize="25" Margin="0,25,0,25">Assessments</Label>
+            </VerticalStackLayout>
+
+            <Grid Grid.Column="1" VerticalOptions="Center">
+                <ImageButton Source="check_mark.png" WidthRequest="50" HeightRequest="50" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="2" CommandParameter="{Binding CourseEdit}" Command="{Binding SaveChangesToCourseCommand}"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Margin="0">
+
+            <Frame Padding="10" Grid.Row="0">
+                <Grid RowDefinitions="*,*,*">
+                    <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+                        <CheckBox Grid.Column="0" IsChecked="{Binding IncludeObjectiveAssessment, Mode=TwoWay}"/>
+                        <Label Grid.Column="1" Margin="10,0,0,0" FontAttributes="Bold">Objective Assessment</Label>
+                    </Grid>
+
+                    <Entry IsReadOnly="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding ObjectiveAssessmentName}"></Entry>
+
+                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
+                        <Entry IsReadOnly="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Placeholder="Start" Text="{Binding ObjectiveAssessmentStart}"/>
+                        <Entry IsReadOnly="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Placeholder="End" Text="{Binding ObjectiveAssessmentEnd}"/>
+                    </Grid>
+                </Grid>
+            </Frame>
+            <Frame Padding="10" Grid.Row="1">
+                <Grid RowDefinitions="*,*,*">
+                    <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+                        <CheckBox Grid.Column="0" IsChecked="{Binding IncludePerformanceAssessment, Mode=TwoWay}"/>
+                        <Label Grid.Column="1" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                    </Grid>
+
+                    <Entry IsReadOnly="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding PerformanceAssessmentName}"></Entry>
+
+                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
+                        <Entry IsReadOnly="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Placeholder="Start" Text="{Binding PerformanceAssessmentStart}"/>
+                        <Entry IsReadOnly="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Placeholder="End" Text="{Binding PerformanceAssessmentEnd}"/>
+                    </Grid>
+                </Grid>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>
