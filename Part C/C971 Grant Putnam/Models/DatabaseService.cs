@@ -118,11 +118,11 @@ namespace C971_Grant_Putnam.Models
 
             await conn.InsertAsync(course).ConfigureAwait(false);
         }
-        public async Task RemoveCourse(int courseId)
+        public async Task RemoveCourse(Course course)
         {
             await Init().ConfigureAwait(false);
 
-            await conn.DeleteAsync(courseId).ConfigureAwait(false);
+            await conn.DeleteAsync(course).ConfigureAwait(false);
         }
 
         public async Task UpdateCourse(int id, string name, DateTime start, DateTime end, bool notify, string status, string instructorName, string instructorPhone, string instructorEmail, string notes)
@@ -178,6 +178,16 @@ namespace C971_Grant_Putnam.Models
 
         }
 
+        public async Task<ObservableCollection<Assessment>> GetAssessments()
+        {
+            await Init().ConfigureAwait(false);
+
+            var query = await conn.Table<Assessment>().ToListAsync().ConfigureAwait(false);
+            var q = new ObservableCollection<Assessment>(query);
+
+            return q;
+        }
+
         public async Task<ObservableCollection<Assessment>> GetAssessments(int courseId)
         {
             await Init().ConfigureAwait(false);
@@ -203,7 +213,7 @@ namespace C971_Grant_Putnam.Models
             await conn.DeleteAsync(id).ConfigureAwait(false);
         }
 
-        public async Task AssessmentQuery(int id, string name, DateTime start, DateTime end, string type, int courseId, bool notify)
+        public async Task UpdateAssessment(int id, string name, DateTime start, DateTime end, string type, int courseId, bool notify)
         {
             await Init().ConfigureAwait(false);
 
@@ -249,16 +259,15 @@ namespace C971_Grant_Putnam.Models
 
             try
             {
-                await conn.RunInTransactionAsync(conn => {
-                    var terms = new[]
+                var terms = new[]
                     {
                     new Term { Name = "Spring Term", Start = DateTime.Now, End = DateTime.Now, Notify = false },
                     new Term { Name = "Summer Term", Start = new DateTime(2024, 12, 04), End = DateTime.Now, Notify = false },
                     new Term { Name = "Fall Term", Start = DateTime.Now, End = DateTime.Now, Notify = false },
                     new Term { Name = "Winter Term", Start = DateTime.Now, End = DateTime.Now, Notify = false }
-                };
+                    };
 
-                    var courses = new[] {
+                var courses = new[] {
                     new Course { Name = "Basket Weaving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774", Notes = "This is a test note. It talks all about how cool we are in this app. Imagine being able to take notes on a specific class and have it categorized correctly.. Neat, right?" },
                     new Course { Name = "Scuba Diving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
                     new Course { Name = "Calculus I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
@@ -274,7 +283,15 @@ namespace C971_Grant_Putnam.Models
                     new Course { Name = "TestTaking III", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
                     new Course { Name = "Bus Driving I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
                     new Course { Name = "Life II", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" }
+                    };
+
+                var assessments = new[]
+                {
+                    new Assessment { CourseId = 1, Name = "DEA01", Start = new DateTime(2024,12,04), End = new DateTime(2024,12,05), Notify = true, Type = "PA" },
+                    new Assessment { CourseId = 1, Name = "DEA10", Start = new DateTime(2024,12,06), End = new DateTime(2024,12,07), Notify = false, Type = "OA" }
                 };
+
+                await conn.RunInTransactionAsync(conn => {
 
                     foreach (var term in terms)
                     {
@@ -284,6 +301,11 @@ namespace C971_Grant_Putnam.Models
                     foreach (var course in courses)
                     {
                         conn.Insert(course);
+                    }
+
+                    foreach (var assessment in assessments)
+                    {
+                        conn.Insert(assessment);
                     }
                 });
             } catch (Exception ex) { Debug.WriteLine(ex); Debug.WriteLine("---Failed to load database.---"); }

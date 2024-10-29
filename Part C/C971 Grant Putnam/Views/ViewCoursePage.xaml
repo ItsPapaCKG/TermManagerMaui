@@ -15,9 +15,15 @@
                 
             </VerticalStackLayout>
 
-            <ImageButton Source="pencil.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center"
-                         Command="{Binding GoToEditCourseCommand}"
-                         CommandParameter="{Binding SelectedCourse}"/>
+            <Grid RowDefinitions="*,*" Grid.Column="1">
+                <ImageButton Grid.Row="0" Source="pencil.png" WidthRequest="30" HeightRequest="30"  VerticalOptions="Center"
+                                 Command="{Binding GoToEditCourseCommand}"
+                                 CommandParameter="{Binding SelectedCourse}"/>
+                <ImageButton Grid.Row="1" Source="garbage.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center"
+                                 Command="{Binding DeleteCourseCommand}"
+                                 CommandParameter="{Binding SelectedCourse}"/>
+            </Grid>
+
         </Grid>
         <Grid Grid.Row="1" RowDefinitions="Auto,*">
             <Frame Grid.Row="0" CornerRadius="25" BackgroundColor="LightGray" Margin="10" Padding="2.5">

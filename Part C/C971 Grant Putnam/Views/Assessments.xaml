@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:C971_Grant_Putnam.Models"
              x:Class="C971_Grant_Putnam.Views.Assessments">
-    <Grid RowDefinitions="*,*">
-        <Frame Grid.Row="0">
-            <Label>Test 1</Label>
-        </Frame>
-        <Frame Grid.Row="2">
-            <Label>Test 2</Label>
-        </Frame>
-    </Grid>
+    <ContentView.Resources>
+        <model:StartConverter x:Key="StartConverter"/>
+        <model:EndConverter x:Key="EndConverter"/>
+    </ContentView.Resources>
+    
+    <CollectionView
+        ItemsSource="{Binding Assessments}"
+        SelectionMode="None">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Assessment">
+                <Frame Margin="25">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label FontAttributes="Bold" Text="{Binding Name}"></Label>
+                            <Label Text="{Binding Start, Converter={StaticResource StartConverter}}"></Label>
+                            <Label Text="{Binding End, Converter={StaticResource EndConverter}}"></Label>
+                        </VerticalStackLayout>
+
+                        <Label Grid.Column="1" Text="{Binding Type}"></Label>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+
+    </CollectionView>
 </ContentView>

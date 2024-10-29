@@ -5,48 +5,47 @@
              xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
              x:Class="C971_Grant_Putnam.Views.MainPage">
 
-    <Grid RowDefinitions="5*,10*,75*,10*" Padding="10">
+    <Grid RowDefinitions="8*,9*,75*,8*" Padding="10">
 
         <Grid Grid.Row="0">
             <Grid ColumnDefinitions="*,Auto">
-                
-            
-                <CollectionView HorizontalOptions="Fill"
-                                BackgroundColor="LightGray"
-                                Grid.Column="0"
-                                Margin="0"
-                                ItemsLayout="HorizontalList"
-                                ItemsSource="{Binding Terms}"
-                                SelectedItem="{Binding SelectedTerm, Mode=TwoWay}"
-                                SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Term">
-                            <Frame Padding="0" Margin="2.5" BorderColor="Transparent" CornerRadius="50" HasShadow="True">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=SwitchTermCommand}"/>
-                                </Frame.GestureRecognizers>
 
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="Transparent" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="Gray" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
+                <Frame Grid.Column="0" CornerRadius="25" Padding="5" Margin="0">
+                    <CollectionView
+                                    Margin="0"
+                                    ItemsLayout="HorizontalList"
+                                    ItemsSource="{Binding Terms}"
+                                    SelectedItem="{Binding SelectedTerm, Mode=TwoWay}"
+                                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Term">
+                                <Frame Padding="0" Margin="0" BorderColor="Transparent" CornerRadius="50" HasShadow="True">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=SwitchTermCommand}"/>
+                                    </Frame.GestureRecognizers>
 
-                                <Label Padding="0" Margin="10,0,10,0" Text="{Binding Name}" VerticalOptions="Center"></Label>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="Gray" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                    <Label Padding="0" Margin="10,0,10,0" Text="{Binding Name}" VerticalOptions="Center"></Label>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
             
-                </CollectionView>
+                    </CollectionView>
+                </Frame>
 
                 <Button Grid.Column="1" WidthRequest="50" CornerRadius="0" Text="+" FontSize="15" VerticalOptions="Center"></Button>
             </Grid>

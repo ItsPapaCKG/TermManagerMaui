@@ -1061,6 +1061,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="E:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.PropertyChanged">
             <inheritdoc cref = "E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>
@@ -1387,11 +1388,20 @@
         <member name="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.CarouselAction">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.carouselAction"/>
         </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.Assessments">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.assessments"/>
+        </member>
         <member name="F:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.goToEditCourseCommand">
             <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.GoToEditCourseCommand"/>.</summary>
         </member>
         <member name="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.GoToEditCourseCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.GoToEditCourse(C971_Grant_Putnam.Models.Course)"/>.</summary>
+        </member>
+        <member name="F:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.deleteCourseCommand">
+            <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.DeleteCourseCommand"/>.</summary>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.DeleteCourseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.DeleteCourse(C971_Grant_Putnam.Models.Course)"/>.</summary>
         </member>
         <member name="F:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.switchPositionCommand">
             <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.SwitchPositionCommand"/>.</summary>
@@ -1461,6 +1471,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CarouselAction">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CarouselAction" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Assessments">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Assessments" generated properties.</summary>
         </member>
     </members>
 </doc>

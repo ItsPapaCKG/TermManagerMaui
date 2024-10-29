@@ -26,6 +26,8 @@ namespace C971_Grant_Putnam.ViewModels
 
         public ObservableCollection<Course>? ViewedCourses { get; } = new();
 
+        public ObservableCollection<Assessment> Assessments { get; } = new();
+
         [ObservableProperty]
         private Term selectedTerm;
 
@@ -109,12 +111,28 @@ namespace C971_Grant_Putnam.ViewModels
         [RelayCommand]
         async void ViewCourseInfoAsync(Course course)
         {
-            await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
-                new Dictionary<string, object>
-                {
+            var a = Assessments.Where(a => a.CourseId == course.Id).ToList();
+
+            if (a.Count == 2)
+            {
+                Assessment[] assessments = { a[0], a[1] };
+
+                await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
+                    new Dictionary<string, object>
+                    {
+                    { "SelectedCourse", course},
+                    {"Assessments", assessments}
+                    }
+                );
+            } else
+            {
+                await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
+                    new Dictionary<string, object>
+                    {
                     { "SelectedCourse", course}
-                }
-            );
+                    }
+                );
+            }
         }
 
         public async Task RefreshCourses()
@@ -122,6 +140,7 @@ namespace C971_Grant_Putnam.ViewModels
             var courses = await databaseService.GetCourses();
 
             Courses.Clear();
+            ViewedCourses.Clear();
 
             foreach (var c in courses)
             {
@@ -136,7 +155,7 @@ namespace C971_Grant_Putnam.ViewModels
             Terms.Clear();
             Courses.Clear();
 
-            if (CheckFirstLaunch())
+            if (/*CheckFirstLaunch()*/true)
             {
                 await databaseService.LoadSampleData();
             }
@@ -144,7 +163,9 @@ namespace C971_Grant_Putnam.ViewModels
             var terms = await databaseService.GetTerms();
             //Courses = await databaseService.GetCourses();
             var courses = await databaseService.GetCourses();
-            
+
+            var assessments = await databaseService.GetAssessments();
+
             foreach (var term in terms)
             {
                 Terms.Add(term);
@@ -153,6 +174,11 @@ namespace C971_Grant_Putnam.ViewModels
             foreach (var course in courses)
             {
                 Courses.Add(course);
+            }
+
+            foreach (var assessment in assessments)
+            {
+                Assessments.Add(assessment);
             }
 
             if (SelectedTerm is null)

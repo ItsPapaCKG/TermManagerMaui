@@ -12,6 +12,7 @@ namespace C971_Grant_Putnam.ViewModels
 {
     [INotifyPropertyChanged]
     [QueryProperty("SelectedCourse", "SelectedCourse")]
+    [QueryProperty("Assessments", "Assessments")]
     public partial class ViewCourseViewModel
     {
 
@@ -24,6 +25,19 @@ namespace C971_Grant_Putnam.ViewModels
         [ObservableProperty]
         private Action<int> carouselAction;
 
+        [ObservableProperty]
+        private Assessment[] assessments;
+
+        private DatabaseService database;
+
+        private MainViewModel mainview;
+
+        public ViewCourseViewModel(DatabaseService db, MainViewModel mvm)
+        {
+            database = db;
+            mainview = mvm;
+        }
+
         [RelayCommand]
         async Task GoToEditCourse(Course course)
         {
@@ -32,6 +46,16 @@ namespace C971_Grant_Putnam.ViewModels
                     {"SelectedCourse", course},
                     {"EditMode", true}
                 });
+        }
+
+        [RelayCommand]
+        async Task DeleteCourse(Course course)
+        {
+            await database.RemoveCourse(course);
+            mainview.RefreshCourses();
+
+            await Shell.Current.GoToAsync("..", true);
+
         }
 
         [RelayCommand]
