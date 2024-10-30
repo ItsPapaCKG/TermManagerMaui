@@ -198,6 +198,13 @@ namespace C971_Grant_Putnam.Models
             return q;
         }
 
+        public async Task AddAssessment(Assessment a)
+        {
+            await Init().ConfigureAwait(false);
+
+            await conn.InsertAsync(a).ConfigureAwait(false);
+        }
+
         public async Task AddAssessment(string name, DateTime start, DateTime end, string type, int courseId, bool notify)
         {
             await Init().ConfigureAwait(false);
@@ -211,6 +218,25 @@ namespace C971_Grant_Putnam.Models
             await Init().ConfigureAwait(false);
 
             await conn.DeleteAsync(id).ConfigureAwait(false);
+        }
+
+        public async Task UpdateAssessment(int id, Assessment assessment)
+        {
+            await Init().ConfigureAwait(false);
+
+            var assessmentQuery = await conn.Table<Assessment>().FirstOrDefaultAsync(a => a.Id == id).ConfigureAwait(false);
+
+            if (assessmentQuery != null)
+            {
+                assessmentQuery.Name = assessment.Name;
+                assessmentQuery.Start = assessment.Start;
+                assessmentQuery.End = assessment.End;
+                assessmentQuery.Type = assessment.Type;
+                assessmentQuery.CourseId = assessment.CourseId;
+                assessmentQuery.Notify = assessment.Notify;
+
+                await conn.UpdateAsync(assessmentQuery).ConfigureAwait(false);
+            }
         }
 
         public async Task UpdateAssessment(int id, string name, DateTime start, DateTime end, string type, int courseId, bool notify)
