@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Grant_Putnam.Views.ViewCourseHeader">
+    <Grid ColumnDefinitions="*,Auto" Padding="30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+            <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Name}"></Label>
+            <Label TextColor="White" FontAttributes="None" Text="{Binding SelectedCourse.Start}"></Label>
+            <Label TextColor="White" FontAttributes="None" Text="{Binding SelectedCourse.End}"></Label>
+            <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Status}"></Label>
+        </VerticalStackLayout>
+
+        <Grid RowDefinitions="*,*" Grid.Column="1">
+            <ImageButton Grid.Row="0" Source="pencil.png" WidthRequest="30" HeightRequest="30"  VerticalOptions="Center"
+                     Command="{Binding GoToEditCourseCommand}"
+                     CommandParameter="{Binding SelectedCourse}"/>
+            <ImageButton Grid.Row="1" Source="garbage.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center"
+                     Command="{Binding DeleteCourseCommand}"
+                     CommandParameter="{Binding SelectedCourse}"/>
+        </Grid>
+    </Grid>
+</ContentView>

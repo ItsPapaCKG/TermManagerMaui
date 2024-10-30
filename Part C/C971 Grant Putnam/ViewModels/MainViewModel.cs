@@ -113,7 +113,7 @@ namespace C971_Grant_Putnam.ViewModels
         {
             var a = Assessments.Where(a => a.CourseId == course.Id).ToList();
 
-            if (a.Count <= 2)
+            if (a.Count <= 2 && a.Count > 0)
             {
                 var assess = new ObservableCollection<Assessment>();
                 var obj = a.FirstOrDefault(x => x.Type == "OA", null);
@@ -132,7 +132,7 @@ namespace C971_Grant_Putnam.ViewModels
                     { "SelectedCourse", course},
                     {"Assessments", assess}
                         }
-                    );
+                    ).ConfigureAwait(false);
 
 
             } else
@@ -142,7 +142,7 @@ namespace C971_Grant_Putnam.ViewModels
                     {
                     { "SelectedCourse", course}
                     }
-                );
+                ).ConfigureAwait(false);
             }
         }
 

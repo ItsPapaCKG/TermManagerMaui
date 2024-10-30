@@ -6,23 +6,20 @@
              x:Class="C971_Grant_Putnam.Views.ViewCoursePage"
              Title="ViewCoursePage">
     <Grid RowDefinitions="20*,90*">
-        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" BackgroundColor="DarkSlateGrey" Padding="30">
-            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
-                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Name}"></Label>
-                <Label TextColor="White" FontAttributes="None" Text="{Binding SelectedCourse.Start}"></Label>
-                <Label TextColor="White" FontAttributes="None" Text="{Binding SelectedCourse.End}"></Label>
-                <Label TextColor="White" FontAttributes="Bold" Text="{Binding SelectedCourse.Status}"></Label>
-                
-            </VerticalStackLayout>
-
-            <Grid RowDefinitions="*,*" Grid.Column="1">
-                <ImageButton Grid.Row="0" Source="pencil.png" WidthRequest="30" HeightRequest="30"  VerticalOptions="Center"
-                                 Command="{Binding GoToEditCourseCommand}"
-                                 CommandParameter="{Binding SelectedCourse}"/>
-                <ImageButton Grid.Row="1" Source="garbage.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center"
-                                 Command="{Binding DeleteCourseCommand}"
-                                 CommandParameter="{Binding SelectedCourse}"/>
-            </Grid>
+        <Grid Grid.Row="0" BackgroundColor="DarkSlateGrey">
+            <CarouselView IsSwipeEnabled="False" Loop="False" Position="{Binding CarouselPosition}" HorizontalOptions="FillAndExpand" PeekAreaInsets="0">
+                <CarouselView.ItemsSource>
+                    <x:Array Type="{x:Type ContentView}">
+                        <view:ViewCourseHeader BindingContext="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ViewCourseViewModel}}}"/>
+                        <view:ViewAssessmentsHeader BindingContext="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ViewCourseViewModel}}}"/>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView Padding="0" Margin="0" HorizontalOptions="FillAndExpand" Content="{Binding}"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
 
         </Grid>
         <Grid Grid.Row="1" RowDefinitions="Auto,*">

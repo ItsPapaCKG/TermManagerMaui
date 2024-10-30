@@ -29,6 +29,12 @@
     <MauiXaml Update="Views\MainPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\ViewAssessmentsHeader.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\ViewCourseHeader.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\ViewCoursePage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

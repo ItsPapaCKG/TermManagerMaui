@@ -2,6 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:C971_Grant_Putnam.Models"
+             xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
              x:Class="C971_Grant_Putnam.Views.Assessments">
     <ContentView.Resources>
         <model:StartConverter x:Key="StartConverter"/>
@@ -26,6 +27,15 @@
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
+        <CollectionView.EmptyView>
+            <VerticalStackLayout Padding="30">
+                <Label HorizontalOptions="Center" Margin="5,5,5,40">No assessments found.</Label>
+                
+                <Button Opacity="0.7" BackgroundColor="Blue" BorderColor="Black" BorderWidth="2" Text="Add Assessments" Command="{Binding GoToEditCourseCommand}" CommandParameter="{Binding SelectedCourse}"/>
+                
+            </VerticalStackLayout>
+            
+        </CollectionView.EmptyView>
 
     </CollectionView>
 </ContentView>

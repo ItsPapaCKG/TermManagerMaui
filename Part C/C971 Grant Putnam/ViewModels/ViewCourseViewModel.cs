@@ -37,6 +37,11 @@ namespace C971_Grant_Putnam.ViewModels
         {
             database = db;
             mainview = mvm;
+
+            if (Assessments is null)
+            {
+                Assessments = new();
+            }
         }
 
         [RelayCommand]
@@ -53,7 +58,7 @@ namespace C971_Grant_Putnam.ViewModels
                 return;
             }
 
-            var a = mainview.Assessments.Where(a => a.CourseId == course.Id).ToList();
+            var a = Assessments.Where(a => a.CourseId == course.Id).ToList();
 
             if (a.Count > 2)
             {
@@ -78,7 +83,7 @@ namespace C971_Grant_Putnam.ViewModels
                     new Dictionary<string, object> {
                     {"Assessments", assessments},
                         {"CourseId", SelectedCourse.Id}
-                    });
+                    }).ConfigureAwait(false);
 
         }
 

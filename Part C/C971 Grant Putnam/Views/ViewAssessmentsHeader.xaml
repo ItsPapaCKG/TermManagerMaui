@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_Grant_Putnam.Views.ViewAssessmentsHeader">
+    <Grid ColumnDefinitions="*,Auto" Padding="30" HorizontalOptions="FillAndExpand">
+            <Label Grid.Column="0" TextColor="White" FontAttributes="Bold" FontSize="15" Margin="0,0,0,0" VerticalOptions="Center">Assessments</Label>
+            
+            
+            <Grid Grid.Column="1" VerticalOptions="Center">
+            <ImageButton Source="pencil.png" WidthRequest="30" HeightRequest="30" Grid.Column="1" VerticalOptions="Center" Command="{Binding GoToEditCourseCommand}" CommandParameter="{Binding SelectedCourse}"/>
+            </Grid>
+        </Grid>
+</ContentView>
