@@ -213,11 +213,11 @@ namespace C971_Grant_Putnam.Models
 
             await conn.InsertAsync(a).ConfigureAwait(false);
         }
-        public async Task RemoveAssessment(int id)
+        public async Task RemoveAssessment(Assessment assessment)
         {
             await Init().ConfigureAwait(false);
 
-            await conn.DeleteAsync(id).ConfigureAwait(false);
+            await conn.DeleteAsync(assessment).ConfigureAwait(false);
         }
 
         public async Task UpdateAssessment(int id, Assessment assessment)
@@ -333,7 +333,10 @@ namespace C971_Grant_Putnam.Models
                     {
                         conn.Insert(assessment);
                     }
+
+                    
                 });
+                await RemoveAssessment((await GetAssessments()).FirstOrDefault(a => a.Id == 2));
             } catch (Exception ex) { Debug.WriteLine(ex); Debug.WriteLine("---Failed to load database.---"); }
 
         }

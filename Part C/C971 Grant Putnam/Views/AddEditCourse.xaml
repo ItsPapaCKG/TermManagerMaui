@@ -25,6 +25,11 @@
                         <x:String>Passed</x:String>
                     </Picker.Items>
                 </Picker>
+
+                <Grid ColumnDefinitions="Auto,*">
+                    <CheckBox Grid.Column="0" IsChecked="{Binding CourseEdit.Notify}"/>
+                    <Label Grid.Column="1" TextColor="White" VerticalOptions="Center">Notify me of start and end dates</Label>
+                </Grid>
             </VerticalStackLayout>
 
             <Grid Grid.Column="1" VerticalOptions="Center">

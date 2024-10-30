@@ -12,6 +12,7 @@ namespace C971_Grant_Putnam
             Routing.RegisterRoute(nameof(AddEditTerm), typeof(AddEditTerm));
             Routing.RegisterRoute(nameof(ViewCoursePage), typeof(ViewCoursePage));
             Routing.RegisterRoute(nameof(AddEditCourse), typeof(AddEditCourse));
+            Routing.RegisterRoute(nameof(EditAssessments), typeof(EditAssessments));
         }
     }
 }

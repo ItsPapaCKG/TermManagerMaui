@@ -1,0 +1,84 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = C971_Grant_Putnam
+build_property.ProjectDir = C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/AddEditCourse.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.AddEditCourse.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddEditCourse.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddEditCourse.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/AddEditTerm.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.AddEditTerm.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddEditTerm.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddEditTerm.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/Assessments.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.Assessments.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Assessments.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Assessments.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/CourseDetails.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.CourseDetails.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\CourseDetails.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\CourseDetails.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/EditAssessments.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.EditAssessments.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\EditAssessments.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\EditAssessments.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MainPage.xaml
+
+[C:/Users/GrantP/Documents/WGU/D971/Part C/C971 Grant Putnam/Views/ViewCoursePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = C971_Grant_Putnam.Views.ViewCoursePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ViewCoursePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ViewCoursePage.xaml

@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -14,6 +15,7 @@ namespace C971_Grant_Putnam.ViewModels
 {
     [INotifyPropertyChanged]
     [QueryProperty("Assessments","Assessments")]
+    [QueryProperty("CourseId","CourseId")]
     public partial class AddEditAssessmentViewModel : IQueryAttributable
     {
         [ObservableProperty]
@@ -49,7 +51,7 @@ namespace C971_Grant_Putnam.ViewModels
         private bool performanceAssessmentNotify;
 
         [ObservableProperty]
-        private Assessment[] assessments;
+        private ObservableCollection<Assessment> assessments;
 
         [ObservableProperty]
         private int courseId;
@@ -74,23 +76,26 @@ namespace C971_Grant_Putnam.ViewModels
 
             // If any assessments are passed, categorize
 
-            var aS = (Assessment[])query["Assessments"];
-            if (aS[0] is not null)
+            var aS = (ObservableCollection<Assessment>)query["Assessments"];
+            var receivedObjective = aS.FirstOrDefault(x => x.Type == "OA", null);
+            var receivedPerformance = aS.FirstOrDefault(x => x.Type == "PA", null);
+
+            if (receivedObjective is not null)
             {
                 IncludeObjectiveAssessment = true;
-                ObjectiveAssessmentName = aS[0].Name;
-                ObjectiveAssessmentStart = aS[0].Start;
-                ObjectiveAssessmentEnd = aS[0].End;
-                ObjectiveAssessmentNotify = aS[0].Notify;
+                ObjectiveAssessmentName = receivedObjective.Name;
+                ObjectiveAssessmentStart = receivedObjective.Start;
+                ObjectiveAssessmentEnd = receivedObjective.End;
+                ObjectiveAssessmentNotify = receivedObjective.Notify;
             }
             
-            if (aS[1] is not null)
+            if (receivedPerformance is not null)
             {
                 IncludePerformanceAssessment = true;
-                PerformanceAssessmentName = aS[0].Name;
-                PerformanceAssessmentStart = aS[0].Start;
-                PerformanceAssessmentEnd = aS[0].End;
-                PerformanceAssessmentNotify = aS[0].Notify;
+                PerformanceAssessmentName = receivedPerformance.Name;
+                PerformanceAssessmentStart = receivedPerformance.Start;
+                PerformanceAssessmentEnd = receivedPerformance.End;
+                PerformanceAssessmentNotify = receivedPerformance.Notify;
             }
         }
 
@@ -102,6 +107,7 @@ namespace C971_Grant_Putnam.ViewModels
             a.End = ObjectiveAssessmentEnd;
             a.Notify = ObjectiveAssessmentNotify;
             a.Type = "OA";
+            a.CourseId = CourseId;
 
             return a;
         }
@@ -114,6 +120,7 @@ namespace C971_Grant_Putnam.ViewModels
             a.End = PerformanceAssessmentEnd;
             a.Notify = PerformanceAssessmentNotify;
             a.Type = "PA";
+            a.CourseId = CourseId;
 
             return a;
         }
@@ -121,7 +128,7 @@ namespace C971_Grant_Putnam.ViewModels
         {
             try
             {
-                await database.RemoveAssessment(a.Id).ConfigureAwait(false);
+                await database.RemoveAssessment(a).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -156,57 +163,89 @@ namespace C971_Grant_Putnam.ViewModels
         [RelayCommand]
         async Task SaveAssessments()
         {
-            var obj = Assessments[0] ?? new Assessment();
-            var per = Assessments[1] ?? new Assessment();
+            var oldObj = Assessments.FirstOrDefault(x => x.Type == "OA", null);
+            var oldPer = Assessments.FirstOrDefault(x => x.Type == "PA", null);
 
+            var obj = oldObj;
+            var per = oldPer;
+
+            var updatedAssessments = new ObservableCollection<Assessment>();
             // sending any operations to be run as a single operation for performance, collect all objects that will be added here
-            var transactionQueue = new Dictionary<string, Assessment[]>();
+            var transactionQueue = new Dictionary<string, List<Assessment>>();
+            transactionQueue.Add("Update", new List<Assessment>());
+            transactionQueue.Add("Add", new List<Assessment>());
+            transactionQueue.Add("Remove", new List<Assessment>());
+
 
             if (IncludeObjectiveAssessment)
             {
-                obj.Id = Assessments[0] is null ? 0 : Assessments[0].Id;
-                obj.Name = ObjectiveAssessmentName;
-                obj.Start = ObjectiveAssessmentStart;
-                obj.End = ObjectiveAssessmentEnd;
-                obj.Notify = ObjectiveAssessmentNotify;
-                obj.Type = "OA";
-                obj.CourseId = CourseId;
+                obj = CreateObj();
+                obj.Id = oldObj is null ? 0 : oldObj.Id;
 
                 // to break up if statements, set "queue" as an action corresponding to adding to the "add" or "update" queue
                 // in doing so, we don't need to repetitively check if values are null
-                Action queue = Assessments[0] is null ? () => transactionQueue["Add"].Append(obj) : () => transactionQueue["Update"].Append(obj);
+                Action queue = oldObj is null ? () => transactionQueue["Add"].Add(obj) : () => transactionQueue["Update"].Add(obj);
                 queue();
+
+                updatedAssessments.Add(obj);
+
                 goto PerformanceAssessmentCheck;
             }
 
-            if (Assessments[0] is Assessment a)
+            if (oldObj is Assessment a)
             {
-                transactionQueue["Remove"].Append(a);
+                transactionQueue["Remove"].Add(a);
             }
 
             PerformanceAssessmentCheck:
 
                 if (IncludePerformanceAssessment)
                 {
-                    per.Id = Assessments[1] is null ? 0 : Assessments[1].Id;
-                    per.Name = PerformanceAssessmentName;
-                    per.Start = PerformanceAssessmentStart;
-                    per.End = PerformanceAssessmentEnd;
-                    per.Notify = PerformanceAssessmentNotify;
-                    per.Type = "PA";
-                    per.CourseId = CourseId;
+                    per = CreatePer();
+                    per.Id = oldPer is null ? 0 : oldPer.Id;
 
-                    Action queue = Assessments[1] is null ? () => transactionQueue["Add"].Append(per) : () => transactionQueue["Update"].Append(per);
-                    queue(); 
-                    //goto Transactions;
-            } else if (Assessments[1] is not null)
+                    Action queue = oldPer is null ? () => transactionQueue["Add"].Add(per) : () => transactionQueue["Update"].Add(per);
+                    queue();
+
+                    updatedAssessments.Add(per);
+
+                    goto Transactions;
+            } else if (oldPer is not null)
                 {
                     // if PA already exists and user excludes it, queue to remove
-                    transactionQueue["Remove"].Append(Assessments[1]);
+                    transactionQueue["Remove"].Add(oldPer);
                 }
 
             //TODO iterate over queue to run db operations
+            Transactions:
+            {
+                foreach (var assessment in transactionQueue["Add"])
+                {
+                    if (assessment is null) continue;
+                    AddAssessment(assessment);
+                }
 
+                foreach (var assessment in transactionQueue["Update"])
+                {
+                    if (assessment is null) continue;
+                    UpdateAssessment(assessment);
+                }
+
+                foreach (var assessment in transactionQueue["Remove"])
+                {
+                    if (assessment is null) continue;
+                    RemoveAssessment(assessment);
+                }
+
+                mainview.RefreshCourses();
+
+                await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
+                {
+                    {"Assessments", updatedAssessments }
+                });
+
+                
+            }
         }
     }
 }

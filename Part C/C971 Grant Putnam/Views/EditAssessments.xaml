@@ -18,39 +18,49 @@
             </VerticalStackLayout>
 
             <Grid Grid.Column="1" VerticalOptions="Center">
-                <ImageButton Source="check_mark.png" WidthRequest="50" HeightRequest="50" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="2" CommandParameter="{Binding CourseEdit}" Command="{Binding SaveChangesToCourseCommand}"/>
+                <ImageButton Source="check_mark.png" WidthRequest="50" HeightRequest="50" Grid.Column="1" VerticalOptions="Center" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="2" Command="{Binding SaveAssessmentsCommand}"/>
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="1" RowDefinitions="Auto,*" Margin="0">
+        <Grid Grid.Row="1" RowDefinitions="Auto,Auto" Margin="0">
 
-            <Frame Padding="10" Grid.Row="0">
-                <Grid RowDefinitions="*,*,*">
+            <Frame Padding="10" Margin="15" Grid.Row="0">
+                <Grid RowDefinitions="*,*,*,*">
                     <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
                         <CheckBox Grid.Column="0" IsChecked="{Binding IncludeObjectiveAssessment, Mode=TwoWay}"/>
-                        <Label Grid.Column="1" Margin="10,0,0,0" FontAttributes="Bold">Objective Assessment</Label>
+                        <Label Grid.Column="1" Margin="10,0,0,0" VerticalOptions="Center" FontAttributes="Bold">Objective Assessment</Label>
                     </Grid>
 
-                    <Entry IsReadOnly="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding ObjectiveAssessmentName}"></Entry>
+                    <Entry IsEnabled="{Binding IncludeObjectiveAssessment}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding ObjectiveAssessmentName}"></Entry>
 
-                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
-                        <Entry IsReadOnly="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Placeholder="Start" Text="{Binding ObjectiveAssessmentStart}"/>
-                        <Entry IsReadOnly="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Placeholder="End" Text="{Binding ObjectiveAssessmentEnd}"/>
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand">
+                        <DatePicker Grid.Column="0" IsEnabled="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Date="{Binding ObjectiveAssessmentStart}"/>
+                        <DatePicker Grid.Column="1" IsEnabled="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Date="{Binding ObjectiveAssessmentEnd}"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*" Grid.Row="3">
+                        <CheckBox IsEnabled="{Binding IncludeObjectiveAssessment}" Grid.Column="0" IsChecked="{Binding ObjectiveAssessmentNotify, Mode=TwoWay}"/>
+                        <Label IsEnabled="{Binding IncludeObjectiveAssessment}" Grid.Column="1" VerticalOptions="Center">Notify me about start and end dates</Label>
                     </Grid>
                 </Grid>
             </Frame>
-            <Frame Padding="10" Grid.Row="1">
-                <Grid RowDefinitions="*,*,*">
+            <Frame Padding="10" Margin="15,0,15,15" Grid.Row="1">
+                <Grid RowDefinitions="*,*,*,*">
                     <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
                         <CheckBox Grid.Column="0" IsChecked="{Binding IncludePerformanceAssessment, Mode=TwoWay}"/>
                         <Label Grid.Column="1" Margin="10,0,0,0" FontAttributes="Bold"></Label>
                     </Grid>
 
-                    <Entry IsReadOnly="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding PerformanceAssessmentName}"></Entry>
+                    <Entry IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding PerformanceAssessmentName}"></Entry>
 
-                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
-                        <Entry IsReadOnly="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Placeholder="Start" Text="{Binding PerformanceAssessmentStart}"/>
-                        <Entry IsReadOnly="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Placeholder="End" Text="{Binding PerformanceAssessmentEnd}"/>
+                    <Grid Grid.Row="2" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand">
+                        <DatePicker Grid.Column="0" IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Date="{Binding PerformanceAssessmentStart}"/>
+                        <DatePicker Grid.Column="1" IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Date="{Binding PerformanceAssessmentEnd}"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*" Grid.Row="3">
+                        <CheckBox IsEnabled="{Binding IncludePerformanceAssessment}" Grid.Column="0" IsChecked="{Binding PerformanceAssessmentNotify, Mode=TwoWay}"/>
+                        <Label IsEnabled="{Binding IncludePerformanceAssessment}" Grid.Column="1" VerticalOptions="Center">Notify me about start and end dates</Label>
                     </Grid>
                 </Grid>
             </Frame>

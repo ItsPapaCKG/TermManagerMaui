@@ -113,17 +113,28 @@ namespace C971_Grant_Putnam.ViewModels
         {
             var a = Assessments.Where(a => a.CourseId == course.Id).ToList();
 
-            if (a.Count == 2)
+            if (a.Count <= 2)
             {
-                Assessment[] assessments = { a[0], a[1] };
+                var assess = new ObservableCollection<Assessment>();
+                var obj = a.FirstOrDefault(x => x.Type == "OA", null);
+                var per = a.FirstOrDefault(x => x.Type == "PA", null);
 
-                await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
-                    new Dictionary<string, object>
-                    {
+                if (obj is not null)
+                { assess.Add(obj); }
+
+                if (per is not null)
+                { assess.Add(per); }
+
+
+                    await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
+                        new Dictionary<string, object>
+                        {
                     { "SelectedCourse", course},
-                    {"Assessments", assessments}
-                    }
-                );
+                    {"Assessments", assess}
+                        }
+                    );
+
+
             } else
             {
                 await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
@@ -138,13 +149,20 @@ namespace C971_Grant_Putnam.ViewModels
         public async Task RefreshCourses()
         {
             var courses = await databaseService.GetCourses();
+            var assessments = await databaseService.GetAssessments();
 
             Courses.Clear();
             ViewedCourses.Clear();
+            Assessments.Clear();
 
             foreach (var c in courses)
             {
                 Courses.Add(c);
+            }
+
+            foreach (var a in assessments)
+            {
+                Assessments.Add(a);
             }
 
             SwitchTerm(SelectedTerm);
@@ -155,7 +173,7 @@ namespace C971_Grant_Putnam.ViewModels
             Terms.Clear();
             Courses.Clear();
 
-            if (/*CheckFirstLaunch()*/true)
+            if (CheckFirstLaunch())
             {
                 await databaseService.LoadSampleData();
             }

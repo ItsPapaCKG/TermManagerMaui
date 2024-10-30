@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace C971_Grant_Putnam.ViewModels
         private Action<int> carouselAction;
 
         [ObservableProperty]
-        private Assessment[] assessments;
+        private ObservableCollection<Assessment> assessments;
 
         private DatabaseService database;
 
@@ -41,11 +42,44 @@ namespace C971_Grant_Putnam.ViewModels
         [RelayCommand]
         async Task GoToEditCourse(Course course)
         {
-            await Shell.Current.GoToAsync($"{nameof(AddEditCourse)}", true, 
-                new Dictionary<string, object> {
+            if (CarouselPosition == 0)
+            {
+                await Shell.Current.GoToAsync($"{nameof(AddEditCourse)}", true,
+                    new Dictionary<string, object> {
                     {"SelectedCourse", course},
                     {"EditMode", true}
-                });
+                    });
+
+                return;
+            }
+
+            var a = mainview.Assessments.Where(a => a.CourseId == course.Id).ToList();
+
+            if (a.Count > 2)
+            {
+                throw new Exception("More than two assessments found for this course.");
+            }
+
+            var assessments = new ObservableCollection<Assessment>();
+            var obj = a.FirstOrDefault(x => x.Type == "OA");
+            var per = a.FirstOrDefault(x => x.Type == "PA");
+
+            if (obj is not null)
+            {
+                assessments.Add(obj);
+            }
+
+            if (per is not null)
+            {
+                assessments.Add(per);
+            }
+
+            await Shell.Current.GoToAsync($"{nameof(EditAssessments)}", true,
+                    new Dictionary<string, object> {
+                    {"Assessments", assessments},
+                        {"CourseId", SelectedCourse.Id}
+                    });
+
         }
 
         [RelayCommand]
