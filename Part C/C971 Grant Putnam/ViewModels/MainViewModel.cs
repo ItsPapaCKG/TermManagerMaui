@@ -59,6 +59,13 @@ namespace C971_Grant_Putnam.ViewModels
 
                     ViewedCourses.Clear();
                     SwitchTerm(updatedTerm);
+                } else
+                {
+                    Terms.Add(updatedTerm);
+                    SelectedTerm = updatedTerm;
+
+                    ViewedCourses.Clear();
+                    SwitchTerm(updatedTerm);
                 }
 
             });
@@ -70,6 +77,12 @@ namespace C971_Grant_Putnam.ViewModels
         {
             if (term is null)
             {
+                await Shell.Current.GoToAsync($"{nameof(AddEditTerm)}", true,
+                new Dictionary<string, object>
+                {
+                    {"EditMode", false }
+                }
+                );
 
                 return;
             }
@@ -81,6 +94,16 @@ namespace C971_Grant_Putnam.ViewModels
                     {"EditMode", true }
                 }
                 );
+        }
+
+        [RelayCommand]
+        public async Task AddCourse()
+        {
+            await Shell.Current.GoToAsync($"{nameof(AddEditCourse)}", true, new Dictionary<string, object>
+            {
+                {"EditMode", false },
+                {"TermId", SelectedTerm.Id }
+            });
         }
 
         [RelayCommand]
@@ -150,10 +173,17 @@ namespace C971_Grant_Putnam.ViewModels
         {
             var courses = await databaseService.GetCourses();
             var assessments = await databaseService.GetAssessments();
+            var terms = await databaseService.GetTerms();
 
+            Terms.Clear();
             Courses.Clear();
             ViewedCourses.Clear();
             Assessments.Clear();
+
+            foreach (var t in terms)
+            {
+                Terms.Add(t);
+            }
 
             foreach (var c in courses)
             {

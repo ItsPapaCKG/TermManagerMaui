@@ -5,6 +5,11 @@
              xmlns:viewmodel="clr-namespace:C971_Grant_Putnam.ViewModels"
              x:Class="C971_Grant_Putnam.Views.MainPage">
 
+    <ContentPage.Resources>
+        <model:StartConverter x:Key="StartConverter"/>
+        <model:EndConverter x:Key="EndConverter"/>
+    </ContentPage.Resources>
+
     <Grid RowDefinitions="8*,9*,75*,8*" Padding="10">
 
         <Grid Grid.Row="0">
@@ -47,7 +52,7 @@
                     </CollectionView>
                 </Frame>
 
-                <Button Grid.Column="1" WidthRequest="50" CornerRadius="0" Text="+" FontSize="15" VerticalOptions="Center"></Button>
+                <Button Grid.Column="1" WidthRequest="50" CornerRadius="0" Text="+" FontSize="15" VerticalOptions="Center" Command="{Binding GoToEditTermCommand}"></Button>
             </Grid>
         </Grid>
 
@@ -76,18 +81,24 @@
                             </Frame.GestureRecognizers>
                             <Grid RowDefinitions="*,*,*">
                                 <Label Text="{Binding Name}" Grid.Row="0"></Label>
-                                <Label Text="{Binding Start}" Grid.Row="1"></Label>
-                                <Label Text="{Binding End}" Grid.Row="2"></Label>
+                                <Label Text="{Binding Start, Converter={StaticResource StartConverter}}" Grid.Row="1"></Label>
+                                <Label Text="{Binding End, Converter={StaticResource EndConverter}}" Grid.Row="2"></Label>
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
 
+                <!--<CollectionView.EmptyView>
+                    <Grid Padding="30">
+                        <Button Text="Add Course" Command="{Binding AddCourseCommand}"/>
+                    </Grid>
+                </CollectionView.EmptyView>-->
+                
             </CollectionView>
         </Grid>
 
         <Grid Grid.Row="3">
-            <Button Text="+" WidthRequest="50" HeightRequest="50" CornerRadius="50"></Button>
+            <Button Text="+" WidthRequest="50" HeightRequest="50" CornerRadius="50" Command="{Binding AddCourseCommand}"></Button>
         </Grid>
     </Grid>
 

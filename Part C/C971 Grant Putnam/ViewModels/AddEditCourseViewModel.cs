@@ -14,10 +14,14 @@ namespace C971_Grant_Putnam.ViewModels
     [INotifyPropertyChanged]
     [QueryProperty("SelectedCourse","SelectedCourse")]
     [QueryProperty("EditMode","EditMode")]
+    [QueryProperty("TermId","TermId")]
     public partial class AddEditCourseViewModel : IQueryAttributable
     {
         [ObservableProperty]
         private Course selectedCourse;
+
+        [ObservableProperty]
+        private int termId;
 
         [ObservableProperty]
         private Course courseEdit;
@@ -95,7 +99,9 @@ namespace C971_Grant_Putnam.ViewModels
             }
             else 
             {
+                TermId = (int)query["TermId"];
                 CourseEdit = new Course();
+                CourseEdit.TermId = TermId;
             }
 
         }
@@ -112,7 +118,7 @@ namespace C971_Grant_Putnam.ViewModels
                 course.Instructor_Phone = Phone;
                 course.Instructor_Email = Email;
 
-                if (editMode && SelectedCourse is not null)
+                if (EditMode && SelectedCourse is not null)
                 {
 
                     await database.UpdateCourse(SelectedCourse.Id, course);
@@ -128,6 +134,8 @@ namespace C971_Grant_Putnam.ViewModels
                 else
                 {
                     await database.AddCourse(course);
+                    mainview.RefreshCourses();
+                    Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course } });
                 }
             }
             catch (Exception ex)

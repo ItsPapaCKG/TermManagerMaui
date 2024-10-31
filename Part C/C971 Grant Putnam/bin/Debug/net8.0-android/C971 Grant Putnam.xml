@@ -691,6 +691,9 @@
         <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.SelectedCourse">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.selectedCourse"/>
         </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.TermId">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.termId"/>
+        </member>
         <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.CourseEdit">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.courseEdit"/>
         </member>
@@ -1075,6 +1078,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="E:C971_Grant_Putnam.ViewModels.MainViewModel.PropertyChanged">
             <inheritdoc cref = "E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>
@@ -1406,6 +1410,12 @@
         </member>
         <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.GoToEditTermCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:C971_Grant_Putnam.ViewModels.MainViewModel.GoToEditTermAsync(C971_Grant_Putnam.Models.Term)"/>.</summary>
+        </member>
+        <member name="F:C971_Grant_Putnam.ViewModels.MainViewModel.addCourseCommand">
+            <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.MainViewModel.AddCourseCommand"/>.</summary>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.AddCourseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:C971_Grant_Putnam.ViewModels.MainViewModel.AddCourse"/>.</summary>
         </member>
         <member name="F:C971_Grant_Putnam.ViewModels.MainViewModel.switchTermCommand">
             <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.MainViewModel.SwitchTermCommand"/>.</summary>
@@ -1816,6 +1826,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedCourse">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedCourse" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TermId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TermId" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CourseEdit">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CourseEdit" generated properties.</summary>

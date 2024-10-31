@@ -38,11 +38,13 @@ namespace C971_Grant_Putnam.ViewModels
         private bool selectedNotify;
 
         private DatabaseService database;
+        private MainViewModel mainview;
         private WeakReferenceMessenger _messenger;
 
-        public AddEditTermViewModel(DatabaseService db)
+        public AddEditTermViewModel(DatabaseService db, MainViewModel mvm)
         {
             database = db;
+            mainview = mvm;
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -65,14 +67,27 @@ namespace C971_Grant_Putnam.ViewModels
                 SelectedEndDate = SelectedTerm.End;
                 SelectedNotify = SelectedTerm.Notify;
             }
+            else
+            {
+                SelectedStartDate = DateTime.Today;
+                SelectedEndDate = DateTime.Today;
+            }
         }
 
         [RelayCommand(CanExecute = nameof(CanSaveTermChanges))]
         async Task SubmitTermChangesAsync(Term term)
         {
-            var t = new Term { Id=term.Id, Name = SelectedTermName, Start = SelectedStartDate, End = SelectedEndDate, Notify = SelectedNotify };
+            var t = new Term { Name = SelectedTermName, Start = SelectedStartDate, End = SelectedEndDate, Notify = SelectedNotify };
 
-            await database.UpdateTerm(term.Id, SelectedTermName, SelectedStartDate, SelectedEndDate, SelectedNotify);
+            if (EditMode == true)
+            {
+                await database.UpdateTerm(term.Id, SelectedTermName, SelectedStartDate, SelectedEndDate, SelectedNotify);
+                t.Id = term.Id;
+            } else
+            {
+                await database.AddTerm(SelectedTermName, SelectedStartDate, SelectedEndDate, SelectedNotify);
+                t.Id = -1;
+            }
 
             WeakReferenceMessenger.Default.Send(new UpdateTermMessage(t));
 
