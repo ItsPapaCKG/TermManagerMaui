@@ -1435,6 +1435,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="E:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.PropertyChanged">
             <inheritdoc cref = "E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>
@@ -1781,6 +1782,12 @@
         </member>
         <member name="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.SwitchPositionCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.SwitchPosition(System.String)"/>.</summary>
+        </member>
+        <member name="F:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.shareNotesCommand">
+            <summary>The backing field for <see cref="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.ShareNotesCommand"/>.</summary>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.ShareNotesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:C971_Grant_Putnam.ViewModels.ViewCourseViewModel.ShareNotes(System.String)"/>.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>

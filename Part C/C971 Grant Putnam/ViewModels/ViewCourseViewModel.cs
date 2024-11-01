@@ -107,5 +107,18 @@ namespace C971_Grant_Putnam.ViewModels
             CarouselAction(index);
         }
 
+        [RelayCommand(CanExecute = nameof(CanShareNotes))]
+        public async Task ShareNotes(string notes)
+        {
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
+                Text = $"Check out my course notes for {SelectedCourse.Name}:\n{notes}",
+                Title = "Share notes:"
+            });
+        }
+        public bool CanShareNotes(string notes)
+        {
+            return !string.IsNullOrEmpty(notes ?? "");
+        }
     }
 }
