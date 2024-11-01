@@ -3,6 +3,7 @@ using C971_Grant_Putnam.ViewModels;
 using C971_Grant_Putnam.Views;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
+using Plugin.LocalNotification;
 
 namespace C971_Grant_Putnam
 {
@@ -17,7 +18,8 @@ namespace C971_Grant_Putnam
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseLocalNotification();
                 
                 builder.Services.AddSingleton<DatabaseService>();
                 builder.Services.AddTransient<AddEditTermViewModel>();

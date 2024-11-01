@@ -1,4 +1,6 @@
 ﻿
+using PencilKit;
+using Plugin.LocalNotification;
 using SQLite;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -30,6 +32,7 @@ namespace C971_Grant_Putnam.Models
             await conn.CreateTableAsync<Course>().ConfigureAwait(false);
             await conn.CreateTableAsync<Term>().ConfigureAwait(false);
             await conn.CreateTableAsync<Assessment>().ConfigureAwait(false);
+            await conn.CreateTableAsync<NotificationLog>().ConfigureAwait(false);
         }
 
         public async Task<ObservableCollection<Term>> GetTerms()
@@ -258,6 +261,61 @@ namespace C971_Grant_Putnam.Models
             }
         }
 
+        public async Task CreateNewNotification(DateTime date, string type, string title, string description, int courseId = 0, int assessmentId = 0)
+        {
+            var notificationLog = new NotificationLog { Type = type, ScheduledFor = date };
+
+            bool isCourseNotification = courseId != 0 && assessmentId == 0;
+            bool isAssessmentNotification = assessmentId != 0 && courseId != 0;
+
+            if (isCourseNotification)
+            {
+                notificationLog.CourseId = courseId;
+                notificationLog.AssessmentId = null;
+            }
+
+            if (isAssessmentNotification)
+            {
+                notificationLog.CourseId = courseId;
+                notificationLog.AssessmentId = assessmentId;
+            }
+
+            await conn.InsertAsync(notificationLog);
+
+            if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
+            {
+                await LocalNotificationCenter.Current.RequestNotificationPermission();
+            }
+
+            var notification = new NotificationRequest
+            {
+                NotificationId = notificationLog.Id,
+                Title = title,
+                Subtitle = "WGU Alerts",
+                Description = description,
+                Schedule = new NotificationRequestSchedule
+                {
+                    NotifyTime = date
+                }
+            };
+
+            LocalNotificationCenter.Current.Show(notification);
+        }
+
+        public async Task RemoveNotification(NotificationLog notification)
+        {
+            try
+            {
+                if (LocalNotificationCenter.Current.Cancel(notification.Id))
+                {
+                    await conn.DeleteAsync(notification);
+                }
+                else
+                {
+                    throw new Exception($"Could not remove notification with id {notification.Id}");
+                }
+            }
+        }
         public async Task LoadSampleData()
         {
             await Init();

@@ -128,8 +128,6 @@ namespace C971_Grant_Putnam.ViewModels
                     mainview.RefreshCourses();
 
                     Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course} });
-
-                    return;
                 }
                 else
                 {
