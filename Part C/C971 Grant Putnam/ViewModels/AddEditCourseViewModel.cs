@@ -141,7 +141,9 @@ namespace C971_Grant_Putnam.ViewModels
                 else
                 {
                     await database.AddCourse(course).ConfigureAwait(false);
-                    mainview.RefreshCourses();
+                    await mainview.RefreshCourses();
+                    mainview.SwitchToTerm(course.TermId);
+
                     await Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course } }).ConfigureAwait(false);
                 }
 

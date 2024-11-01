@@ -44,6 +44,13 @@ namespace C971_Grant_Putnam.Models
             return data;
         }
 
+        public async Task AddTerm(Term term)
+        {
+            await Init().ConfigureAwait(false);
+
+            await conn.InsertAsync(term).ConfigureAwait(false);
+        }
+
         public async Task AddTerm(string name, DateTime start, DateTime end, bool notify)
         {
             await Init().ConfigureAwait(false);
@@ -74,6 +81,14 @@ namespace C971_Grant_Putnam.Models
 
                 await conn.UpdateAsync(termQuery).ConfigureAwait(false);
             }
+        }
+
+        public async Task UpdateTerm(Term term)
+        {
+            await Init().ConfigureAwait(false);
+
+            await conn.UpdateAsync(term).ConfigureAwait(false);
+            
         }
 
         public async Task<ObservableCollection<Course>> GetCourses()
@@ -281,7 +296,11 @@ namespace C971_Grant_Putnam.Models
 
             if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
             {
-                await LocalNotificationCenter.Current.RequestNotificationPermission();
+                await MainThread.InvokeOnMainThreadAsync(async () => {
+                    await LocalNotificationCenter.Current.RequestNotificationPermission();
+                });
+
+                
             }
 
             var notification = notificationTemplate ?? new NotificationRequest
@@ -296,7 +315,7 @@ namespace C971_Grant_Putnam.Models
                 }
             };
 
-            LocalNotificationCenter.Current.Show(notification);
+            await LocalNotificationCenter.Current.Show(notification);
         }
 
         public async Task RemoveNotification(NotificationLog notification)

@@ -85,8 +85,7 @@ namespace C971_Grant_Putnam.ViewModels
                 t.Id = term.Id;
             } else
             {
-                await database.AddTerm(SelectedTermName, SelectedStartDate, SelectedEndDate, SelectedNotify);
-                t.Id = -1;
+                await database.AddTerm(t).ConfigureAwait(false);
             }
 
             WeakReferenceMessenger.Default.Send(new UpdateTermMessage(t));

@@ -87,23 +87,30 @@ namespace C971_Grant_Putnam.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync($"{nameof(AddEditTerm)}", true,
+            await MainThread.InvokeOnMainThreadAsync(async () => {
+                await Shell.Current.GoToAsync($"{nameof(AddEditTerm)}", true,
                 new Dictionary<string, object>
                 {
                     { "SelectedTerm", term},
                     {"EditMode", true }
                 }
                 );
+            });
+            
         }
 
         [RelayCommand]
         public async Task AddCourse()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddEditCourse)}", true, new Dictionary<string, object>
-            {
-                {"EditMode", false },
-                {"TermId", SelectedTerm.Id }
+            await MainThread.InvokeOnMainThreadAsync(async () => {
+                await Shell.Current.GoToAsync($"{nameof(AddEditCourse)}", true, new Dictionary<string, object>
+                {
+                    {"EditMode", false },
+                    {"TermId", SelectedTerm.Id }
+                });
             });
+
+               
         }
 
         [RelayCommand]
@@ -148,24 +155,29 @@ namespace C971_Grant_Putnam.ViewModels
                 if (per is not null)
                 { assess.Add(per); }
 
-
+                await MainThread.InvokeOnMainThreadAsync(async () => {
                     await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
-                        new Dictionary<string, object>
-                        {
-                    { "SelectedCourse", course},
-                    {"Assessments", assess}
-                        }
-                    ).ConfigureAwait(false);
+                            new Dictionary<string, object>
+                            {
+                                { "SelectedCourse", course},
+                                {"Assessments", assess}
+                            }
+                        ).ConfigureAwait(false);
+                });
+                    
 
 
             } else
             {
-                await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
+                await MainThread.InvokeOnMainThreadAsync(async () =>
+                {
+                    await Shell.Current.GoToAsync($"{nameof(ViewCoursePage)}", true,
                     new Dictionary<string, object>
                     {
                     { "SelectedCourse", course}
                     }
-                ).ConfigureAwait(false);
+                    ).ConfigureAwait(false);
+                });
             }
         }
 
@@ -203,7 +215,7 @@ namespace C971_Grant_Putnam.ViewModels
             Terms.Clear();
             Courses.Clear();
 
-            if (/*CheckFirstLaunch()*/true)
+            if (CheckFirstLaunch())
             {
                 await databaseService.LoadSampleData();
             }
