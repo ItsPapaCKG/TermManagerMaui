@@ -203,7 +203,7 @@ namespace C971_Grant_Putnam.ViewModels
             Terms.Clear();
             Courses.Clear();
 
-            if (CheckFirstLaunch())
+            if (/*CheckFirstLaunch()*/true)
             {
                 await databaseService.LoadSampleData();
             }

@@ -1,15 +1,8 @@
 ﻿using C971_Grant_Putnam.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 
 namespace C971_Grant_Putnam.ViewModels
 {
@@ -223,26 +216,50 @@ namespace C971_Grant_Putnam.ViewModels
                 {
                     if (assessment is null) continue;
                     AddAssessment(assessment);
+
+                    await database.RemoveAllNotifications(assessment.CourseId, assessment.Id).ConfigureAwait(false);
+
+                    if (assessment.Notify)
+                    {
+                        database.CreateNewNotification(DateTime.Now, "initial", "Assessment Reminder Set", $"A reminder for {assessment.Name} will be sent on {assessment.Start.AddDays(-1).ToString("MM/dd")}!", assessment.Id);
+                        database.CreateNewNotification(assessment.Start, "start", "New Assessment starting soon!", $"{assessment.Name} starts on {assessment.Start.ToString("MM/dd")}!", assessment.Id);
+                        database.CreateNewNotification(assessment.End, "end", "Your assessment is over today!", $"{assessment.Name} ends next today!", assessment.Id);
+                    }
                 }
 
                 foreach (var assessment in transactionQueue["Update"])
                 {
                     if (assessment is null) continue;
                     UpdateAssessment(assessment);
+
+                    await database.RemoveAllNotifications(assessment.CourseId, assessment.Id).ConfigureAwait(false);
+
+                    if (assessment.Notify)
+                    {
+                        await database.CreateNewNotification(DateTime.Now, "initial", "Assessment Reminder Set", $"A reminder for {assessment.Name} will be sent on {assessment.Start.AddDays(-1).ToString("MM/dd")}!", assessment.Id).ConfigureAwait(false);
+                        await database.CreateNewNotification(assessment.Start, "start", "New Assessment starting soon!", $"{assessment.Name} starts on {assessment.Start.ToString("MM/dd")}!", assessment.Id).ConfigureAwait(false);
+                        await database.CreateNewNotification(assessment.End, "end", "Your assessment is over today!", $"{assessment.Name} ends next today!", assessment.Id).ConfigureAwait(false);
+                    }
                 }
 
                 foreach (var assessment in transactionQueue["Remove"])
                 {
                     if (assessment is null) continue;
                     RemoveAssessment(assessment);
+
+                    await database.RemoveAllNotifications(assessment.CourseId, assessment.Id).ConfigureAwait(false);
                 }
 
-                mainview.RefreshCourses();
+                await mainview.RefreshCourses();
 
-                await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
-                {
-                    {"Assessments", updatedAssessments }
+                await MainThread.InvokeOnMainThreadAsync(async () => {
+                    await Shell.Current.GoToAsync("..", true, new Dictionary<string, object>
+                    {
+                        {"Assessments", updatedAssessments }
+                    });
                 });
+
+                
 
                 
             }

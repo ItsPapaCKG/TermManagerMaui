@@ -17,6 +17,7 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.Essentials.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\Plugin.LocalNotification.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\SQLite-net.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\SQLitePCLRaw.batteries_v2.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\SQLitePCLRaw.core.dll
@@ -264,6 +265,7 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.a
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\build-signature\signature
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\mauifont.inputs
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\mauisplash.inputs
@@ -273,12 +275,12 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449@2x.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\sp\splash_58C11A0A2CDF3C43117FC29EECA319E6FBFEFE150B9123BB20E86A467F499449@3x.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\mauisplash.stamp
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\pencil.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\notification.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\x.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\check_mark.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\calendar.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\notification.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\pencil.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\garbage.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Resources\x.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appiconItunesArtwork.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon83.5x83.5@2x.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-ios\iossimulator-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon76x76@2x.png

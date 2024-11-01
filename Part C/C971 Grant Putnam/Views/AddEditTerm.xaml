@@ -7,10 +7,6 @@
         <Entry Placeholder="Term Name..." Text="{Binding SelectedTermName, Mode=TwoWay}" TextChanged="Entry_TextChanged"></Entry>
         <DatePicker Date="{Binding SelectedStartDate}"/>
         <DatePicker Date="{Binding SelectedEndDate}"/>
-        <Grid ColumnDefinitions="Auto,*">
-            <CheckBox Grid.Column="0" IsChecked="{Binding SelectedNotify}"></CheckBox>
-            <Label Grid.Column="1" VerticalOptions="Center">Notify me about start and end dates</Label>
-        </Grid>
 
         <Button Text="Submit" Command="{Binding SubmitTermChangesCommand}" CommandParameter="{Binding SelectedTerm}"></Button>
     </VerticalStackLayout>

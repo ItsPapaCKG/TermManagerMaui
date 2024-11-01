@@ -18,6 +18,7 @@ namespace C971_Grant_Putnam.ViewModels
     [QueryProperty("TermId","TermId")]
     public partial class AddEditCourseViewModel : IQueryAttributable
     {
+
         [ObservableProperty]
         private Course selectedCourse;
 
@@ -64,12 +65,16 @@ namespace C971_Grant_Putnam.ViewModels
         {
             database = db;
             mainview = mvm;
-            NameError = "NameError";
 
             if (CourseEdit == null)
             {
                 CourseEdit = new Course();
+                CourseEdit.Start = DateTime.Now;
+                CourseEdit.End = DateTime.Now.AddMonths(1);
             }
+
+            CourseEdit.Start = DateTime.Now;
+            CourseEdit.End = DateTime.Now.AddMonths(1);
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -101,8 +106,11 @@ namespace C971_Grant_Putnam.ViewModels
             else 
             {
                 TermId = (int)query["TermId"];
-                CourseEdit = new Course();
-                CourseEdit.TermId = TermId;
+                CourseEdit = new Course() { 
+                    TermId = TermId,
+                    Start = DateTime.Now,
+                    End = DateTime.Now.AddMonths(1)
+                };
             }
 
         }
@@ -114,7 +122,7 @@ namespace C971_Grant_Putnam.ViewModels
             try
             {
                 if (course is null) { throw new Exception("New instance of course being edited is null."); }
-
+                
                 course.Instructor_Name = Name;
                 course.Instructor_Phone = Phone;
                 course.Instructor_Email = Email;
@@ -144,7 +152,7 @@ namespace C971_Grant_Putnam.ViewModels
 
                     await database.CreateNewNotification(DateTime.Now, "initial", "Course Reminder Set", $"A reminder for {course.Name} will be sent on {course.Start.AddDays(-1).ToString("MM/dd")}!", course.Id).ConfigureAwait(false);
                     await database.CreateNewNotification(course.Start, "start", "New Course starting soon!", $"{course.Name} starts on {course.Start.ToString("MM/dd")}!", course.Id).ConfigureAwait(false);
-                    await database.CreateNewNotification(course.End.AddDays(-7), "end", "Your course is almost over!", $"{course.Name} ends next week on {course.End.ToString("MM/dd")}!", course.Id).ConfigureAwait(false);
+                    await database.CreateNewNotification(course.End, "end", "Your course is over today!", $"{course.Name} ends next today!", course.Id).ConfigureAwait(false);
                 }
             }
             catch (Exception ex)

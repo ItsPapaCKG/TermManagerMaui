@@ -398,10 +398,12 @@ namespace C971_Grant_Putnam.Models
                     conn.Execute("DELETE FROM term;");
                     conn.Execute("DELETE FROM course;");
                     conn.Execute("DELETE FROM assessment;");
+                    conn.Execute("DELETE FROM notification");
 
                     conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'term';");
                     conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'course';");
                     conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'assessment';");
+                    conn.Execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'notification';");
                 });
 
                 await conn.ExecuteAsync("VACUUM;");
@@ -416,28 +418,11 @@ namespace C971_Grant_Putnam.Models
             {
                 var terms = new[]
                     {
-                    new Term { Name = "Spring Term", Start = DateTime.Now, End = DateTime.Now, Notify = false },
-                    new Term { Name = "Summer Term", Start = new DateTime(2024, 12, 04), End = DateTime.Now, Notify = false },
-                    new Term { Name = "Fall Term", Start = DateTime.Now, End = DateTime.Now, Notify = false },
-                    new Term { Name = "Winter Term", Start = DateTime.Now, End = DateTime.Now, Notify = false }
+                        new Term { Name = "Spring Term", Start = DateTime.Now, End = DateTime.Now, Notify = false }
                     };
 
                 var courses = new[] {
-                    new Course { Name = "Basket Weaving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774", Notes = "This is a test note. It talks all about how cool we are in this app. Imagine being able to take notes on a specific class and have it categorized correctly.. Neat, right?" },
-                    new Course { Name = "Scuba Diving", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Calculus I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Cat Class I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Woodworking", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Banking", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Beaching I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Surfing I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Cats I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 2, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Pumpkins I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 3, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Leaves I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 3, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Bank Fraud I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 3, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "TestTaking III", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Bus Driving I", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" },
-                    new Course { Name = "Life II", Start = new DateTime(2024, 11, 1), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 4, Instructor_Name = "Bob Good", Instructor_Email = "BobGood@gmail.com", Instructor_Phone = "239-285-6774" }
+                        new Course { Name = "Basket Weaving", Start = new DateTime(2024, 11, 15), End = new DateTime(2024, 11, 30), Status = "Starting Soon", TermId = 1, Instructor_Name = "Anika Patel", Instructor_Email = "anika.patel@strimeuniversity.edu", Instructor_Phone = "555-123-4567", Notes = "This is a test note. It talks all about how cool we are in this app. Imagine being able to take notes on a specific class and have it categorized correctly.. Neat, right?" }
                     };
 
                 var assessments = new[]

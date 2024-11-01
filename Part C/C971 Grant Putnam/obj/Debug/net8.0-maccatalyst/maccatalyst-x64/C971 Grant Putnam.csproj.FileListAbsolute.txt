@@ -17,6 +17,7 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-mac
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Essentials.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Graphics.dll
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\Plugin.LocalNotification.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\SQLite-net.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\SQLitePCLRaw.batteries_v2.dll
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\bin\Debug\net8.0-maccatalyst\maccatalyst-x64\SQLitePCLRaw.core.dll
@@ -265,11 +266,11 @@ C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-mac
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\mauisplash.inputs
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\mauisplash.stamp
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\pencil.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\check_mark.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\calendar.png
-C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\garbage.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\notification.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\x.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\garbage.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\check_mark.png
+C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\calendar.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appiconItunesArtwork.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon83.5x83.5@2x.png
 C:\Users\GrantP\Documents\WGU\D971\Part C\C971 Grant Putnam\obj\Debug\net8.0-maccatalyst\maccatalyst-x64\resizetizer\r\Assets.xcassets\appicon.appiconset\appicon76x76@2x.png
