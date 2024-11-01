@@ -469,7 +469,7 @@ namespace C971_Grant_Putnam.Models
 
                     
                 });
-                await RemoveAssessment((await GetAssessments()).FirstOrDefault(a => a.Id == 2));
+                
             } catch (Exception ex) { Debug.WriteLine(ex); Debug.WriteLine("---Failed to load database.---"); }
 
         }

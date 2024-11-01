@@ -75,14 +75,14 @@
                 ItemsSource="{Binding ViewedCourses}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Course">
-                        <Frame BackgroundColor="Green">
+                        <Frame BackgroundColor="LightGray" BorderColor="Black" Margin="0,10,0,0">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=ViewCourseInfoAsyncCommand}"/>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=ViewCourseInfoAsyncCommand}"/>
                             </Frame.GestureRecognizers>
                             <Grid RowDefinitions="*,*,*">
-                                <Label Text="{Binding Name}" Grid.Row="0"></Label>
-                                <Label Text="{Binding Start, Converter={StaticResource StartConverter}}" Grid.Row="1"></Label>
-                                <Label Text="{Binding End, Converter={StaticResource EndConverter}}" Grid.Row="2"></Label>
+                                <Label FontSize="17" FontAttributes="Bold" Text="{Binding Name}" Grid.Row="0"></Label>
+                                <Label FontSize="17" Text="{Binding Start, Converter={StaticResource StartConverter}}" Grid.Row="1"></Label>
+                                <Label FontSize="17" Text="{Binding End, Converter={StaticResource EndConverter}}" Grid.Row="2"></Label>
                             </Grid>
                         </Frame>
                     </DataTemplate>
@@ -98,7 +98,7 @@
         </Grid>
 
         <Grid Grid.Row="3">
-            <Button Text="+" WidthRequest="50" HeightRequest="50" CornerRadius="50" Command="{Binding AddCourseCommand}"></Button>
+            <Button IsVisible="{Binding ShouldShowAddCourseButton}" Text="+" WidthRequest="50" HeightRequest="50" CornerRadius="50" Command="{Binding AddCourseCommand}"></Button>
         </Grid>
     </Grid>
 

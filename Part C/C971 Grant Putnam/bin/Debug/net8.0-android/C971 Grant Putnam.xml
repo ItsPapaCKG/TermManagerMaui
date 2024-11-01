@@ -1396,6 +1396,9 @@
             </summary>
             <param name = "notifier">The input <see cref = "T:C971_Grant_Putnam.ViewModels.MainViewModel.TaskNotifier`1"/> instance.</param>
         </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.ShouldShowAddCourseButton">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.MainViewModel.shouldShowAddCourseButton"/>
+        </member>
         <member name="P:C971_Grant_Putnam.ViewModels.MainViewModel.SelectedTerm">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.MainViewModel.selectedTerm"/>
         </member>
@@ -1878,6 +1881,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedNotify">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedNotify" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShouldShowAddCourseButton">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShouldShowAddCourseButton" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ShouldRefresh">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ShouldRefresh" generated properties.</summary>

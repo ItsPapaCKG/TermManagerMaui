@@ -70,7 +70,7 @@ namespace C971_Grant_Putnam.ViewModels
             else
             {
                 SelectedStartDate = DateTime.Today;
-                SelectedEndDate = DateTime.Today;
+                SelectedEndDate = DateTime.Today.AddDays(1);
             }
         }
 
@@ -90,7 +90,11 @@ namespace C971_Grant_Putnam.ViewModels
 
             WeakReferenceMessenger.Default.Send(new UpdateTermMessage(t));
 
-            Shell.Current.GoToAsync("..", true);
+            await MainThread.InvokeOnMainThreadAsync(async () => { 
+                await Shell.Current.GoToAsync("..", true);
+            });
+
+            
         }
 
         public bool CanSaveTermChanges()

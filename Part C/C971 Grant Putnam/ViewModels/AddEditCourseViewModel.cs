@@ -69,12 +69,12 @@ namespace C971_Grant_Putnam.ViewModels
             if (CourseEdit == null)
             {
                 CourseEdit = new Course();
-                CourseEdit.Start = DateTime.Now;
-                CourseEdit.End = DateTime.Now.AddMonths(1);
+                CourseEdit.Start = DateTime.Today;
+                CourseEdit.End = DateTime.Today.AddMonths(1);
             }
 
-            CourseEdit.Start = DateTime.Now;
-            CourseEdit.End = DateTime.Now.AddMonths(1);
+            CourseEdit.Start = DateTime.Today;
+            CourseEdit.End = DateTime.Today.AddMonths(1);
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -108,8 +108,8 @@ namespace C971_Grant_Putnam.ViewModels
                 TermId = (int)query["TermId"];
                 CourseEdit = new Course() { 
                     TermId = TermId,
-                    Start = DateTime.Now,
-                    End = DateTime.Now.AddMonths(1)
+                    Start = DateTime.Today,
+                    End = DateTime.Today.AddMonths(1)
                 };
             }
 
@@ -136,7 +136,9 @@ namespace C971_Grant_Putnam.ViewModels
                     SelectedCourse = course;
                     mainview.RefreshCourses();
 
-                    await Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course} }).ConfigureAwait(false);
+                    await MainThread.InvokeOnMainThreadAsync(async () => {
+                        await Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course } }).ConfigureAwait(false);
+                    });
                 }
                 else
                 {
@@ -144,7 +146,11 @@ namespace C971_Grant_Putnam.ViewModels
                     await mainview.RefreshCourses();
                     mainview.SwitchToTerm(course.TermId);
 
-                    await Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course } }).ConfigureAwait(false);
+                    await MainThread.InvokeOnMainThreadAsync(async () => {
+                        await Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { { "SelectedCourse", course } }).ConfigureAwait(false);
+                    });
+
+                    
                 }
 
                 await database.RemoveAllNotifications(course.Id).ConfigureAwait(false);
@@ -152,7 +158,7 @@ namespace C971_Grant_Putnam.ViewModels
                 if (course.Notify)
                 {
 
-                    await database.CreateNewNotification(DateTime.Now, "initial", "Course Reminder Set", $"A reminder for {course.Name} will be sent on {course.Start.AddDays(-1).ToString("MM/dd")}!", course.Id).ConfigureAwait(false);
+                    await database.CreateNewNotification(DateTime.Today, "initial", "Course Reminder Set", $"A reminder for {course.Name} will be sent on {course.Start.AddDays(-1).ToString("MM/dd")}!", course.Id).ConfigureAwait(false);
                     await database.CreateNewNotification(course.Start, "start", "New Course starting soon!", $"{course.Name} starts on {course.Start.ToString("MM/dd")}!", course.Id).ConfigureAwait(false);
                     await database.CreateNewNotification(course.End, "end", "Your course is over today!", $"{course.Name} ends next today!", course.Id).ConfigureAwait(false);
                 }

@@ -29,6 +29,9 @@ namespace C971_Grant_Putnam.ViewModels
         public ObservableCollection<Assessment> Assessments { get; } = new();
 
         [ObservableProperty]
+        private bool shouldShowAddCourseButton;
+
+        [ObservableProperty]
         private Term selectedTerm;
 
         [ObservableProperty]
@@ -42,6 +45,7 @@ namespace C971_Grant_Putnam.ViewModels
         public MainViewModel(DatabaseService db)
         {
             databaseService = db;
+            ShouldShowAddCourseButton = true;
 
             PopulateData();
 
@@ -128,6 +132,11 @@ namespace C971_Grant_Putnam.ViewModels
                 var list = new List<Course>();
 
                 list = Courses.Where(c => c.TermId == term.Id).ToList();
+
+                if (list.Count == 6)
+                    ShouldShowAddCourseButton = false;
+                else
+                    ShouldShowAddCourseButton = true;
 
                 SelectedTermDateRange = SelectedTerm.Start.ToString("MM/dd/yyyy") + " - " + SelectedTerm.End.ToString("MM/dd/yyyy");
 

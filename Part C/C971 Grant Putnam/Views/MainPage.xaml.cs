@@ -13,6 +13,21 @@ namespace C971_Grant_Putnam.Views
             BindingContext = vm;
         
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+        {
+            if (sender is Frame frame)
+            {
+                await MainThread.InvokeOnMainThreadAsync(async () => {
+                    frame.BackgroundColor = Colors.Gray;
+
+                    await Task.Delay(100);
+
+                    frame.BackgroundColor = Colors.LightGray;
+                });
+                
+            }
+        }
     }
 
 }

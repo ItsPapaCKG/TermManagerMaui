@@ -48,7 +48,7 @@
                 <Grid RowDefinitions="*,*,*,*">
                     <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
                         <CheckBox Grid.Column="0" IsChecked="{Binding IncludePerformanceAssessment, Mode=TwoWay}"/>
-                        <Label Grid.Column="1" Margin="10,0,0,0" FontAttributes="Bold"></Label>
+                        <Label Grid.Column="1" Margin="10,0,0,0" FontAttributes="Bold" VerticalOptions="Center">Performance Assessment</Label>
                     </Grid>
 
                     <Entry IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding PerformanceAssessmentName}"></Entry>
