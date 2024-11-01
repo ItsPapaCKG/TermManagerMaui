@@ -1,5 +1,4 @@
 ﻿
-using PencilKit;
 using Plugin.LocalNotification;
 using SQLite;
 using System.Collections.ObjectModel;
@@ -261,22 +260,20 @@ namespace C971_Grant_Putnam.Models
             }
         }
 
-        public async Task CreateNewNotification(DateTime date, string type, string title, string description, int courseId = 0, int assessmentId = 0)
+        public async Task CreateNewNotification(DateTime date, string type, string title, string description, int courseId, int assessmentId = 0, NotificationRequest notificationTemplate = null)
         {
-            var notificationLog = new NotificationLog { Type = type, ScheduledFor = date };
+            var notificationLog = new NotificationLog { CourseId = courseId, Type = type, ScheduledFor = date };
 
             bool isCourseNotification = courseId != 0 && assessmentId == 0;
             bool isAssessmentNotification = assessmentId != 0 && courseId != 0;
 
             if (isCourseNotification)
             {
-                notificationLog.CourseId = courseId;
                 notificationLog.AssessmentId = null;
             }
 
             if (isAssessmentNotification)
             {
-                notificationLog.CourseId = courseId;
                 notificationLog.AssessmentId = assessmentId;
             }
 
@@ -287,7 +284,7 @@ namespace C971_Grant_Putnam.Models
                 await LocalNotificationCenter.Current.RequestNotificationPermission();
             }
 
-            var notification = new NotificationRequest
+            var notification = notificationTemplate ?? new NotificationRequest
             {
                 NotificationId = notificationLog.Id,
                 Title = title,
@@ -315,7 +312,81 @@ namespace C971_Grant_Putnam.Models
                     throw new Exception($"Could not remove notification with id {notification.Id}");
                 }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
+
+        public async Task<NotificationLog?> FindNotification(string type, int courseId, int assessmentId = 0)
+        {
+            try
+            {
+                bool isCourseNotification = assessmentId == 0;
+
+                var logs = await conn.Table<NotificationLog>().Where(n => n.CourseId == courseId && n.Type == type).ToListAsync();
+                NotificationLog? notificationLog = null;
+
+                if (isCourseNotification)
+                {
+                    notificationLog = logs.FirstOrDefault(n => n.AssessmentId == null, null);
+                } else
+                {
+                    notificationLog = logs.FirstOrDefault(n => n.AssessmentId == assessmentId, null);
+                }
+
+                return notificationLog;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task UpdateNotification(DateTime date, string type, string title, string description, int courseId, int assessmentId = 0)
+        {
+
+            // find old request with matching type, courseId, and assessmentId and remove
+            var oldLog = await FindNotification(type, courseId, assessmentId);
+
+            if (oldLog == null)
+            {
+                await CreateNewNotification(date, type, title, description, courseId, assessmentId);
+                return;
+            }
+            
+            await RemoveNotification(oldLog);
+
+            // create new Request
+            await CreateNewNotification(date, type, title, description, courseId, assessmentId);
+
+        }
+
+        public async Task RemoveAllNotifications(int courseId, int assessmentId = 0)
+        {
+            bool isCourseNotification = assessmentId == 0;
+
+            if (isCourseNotification)
+            {
+                var notifications = await conn.Table<NotificationLog>().Where(n => n.CourseId == courseId).ToListAsync();
+
+                foreach (var log in notifications)
+                {
+                    RemoveNotification(log);
+                }
+            } else
+            {
+                var notifications = await conn.Table<NotificationLog>().Where(n => n.CourseId == courseId && n.AssessmentId == assessmentId).ToListAsync();
+
+                foreach (var log in notifications)
+                {
+                    RemoveNotification(log);
+                }
+            }
+        }
+
         public async Task LoadSampleData()
         {
             await Init();
