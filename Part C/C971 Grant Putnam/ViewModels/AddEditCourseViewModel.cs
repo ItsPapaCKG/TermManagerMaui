@@ -29,6 +29,12 @@ namespace C971_Grant_Putnam.ViewModels
         private Course courseEdit;
 
         [ObservableProperty]
+        private DateTime start;
+
+        [ObservableProperty]
+        private DateTime end;
+
+        [ObservableProperty]
         private bool editMode;
 
         [ObservableProperty]
@@ -71,10 +77,9 @@ namespace C971_Grant_Putnam.ViewModels
                 CourseEdit = new Course();
                 CourseEdit.Start = DateTime.Today;
                 CourseEdit.End = DateTime.Today.AddMonths(1);
+                Start = DateTime.Today;
+                End = DateTime.Today.AddDays(1);
             }
-
-            CourseEdit.Start = DateTime.Today;
-            CourseEdit.End = DateTime.Today.AddMonths(1);
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -101,15 +106,19 @@ namespace C971_Grant_Putnam.ViewModels
                 Name = SelectedCourse.Instructor_Name;
                 Phone = SelectedCourse.Instructor_Phone;
                 Email = SelectedCourse.Instructor_Email;
+                Start = SelectedCourse.Start;
+                End = SelectedCourse.End;
 
             }
             else 
             {
                 TermId = (int)query["TermId"];
-                CourseEdit = new Course() { 
-                    TermId = TermId,
-                    Start = DateTime.Today,
-                    End = DateTime.Today.AddMonths(1)
+                Start = DateTime.Today;
+                End = DateTime.Today.AddMonths(1);
+
+                CourseEdit = new Course()
+                {
+                    TermId = TermId
                 };
             }
 
@@ -126,6 +135,8 @@ namespace C971_Grant_Putnam.ViewModels
                 course.Instructor_Name = Name;
                 course.Instructor_Phone = Phone;
                 course.Instructor_Email = Email;
+                course.Start = Start;
+                course.End = End;
 
                 if (EditMode && SelectedCourse is not null)
                 {
@@ -194,6 +205,11 @@ namespace C971_Grant_Putnam.ViewModels
                 errorFound = true;
                 EmailError = "Instructor email cannot be blank.";
                 OnPropertyChanged(nameof(EmailError));
+            }
+
+            if (!DateEvaluator.AreDatesValid(Start, End))
+            {
+                errorFound = true;
             }
 
             if (!errorFound)

@@ -697,6 +697,12 @@
         <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.CourseEdit">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.courseEdit"/>
         </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.Start">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.start"/>
+        </member>
+        <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.End">
+            <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.end"/>
+        </member>
         <member name="P:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.EditMode">
             <inheritdoc cref="F:C971_Grant_Putnam.ViewModels.AddEditCourseViewModel.editMode"/>
         </member>
@@ -1842,6 +1848,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CourseEdit">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CourseEdit" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Start">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Start" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.End">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "End" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EditMode">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EditMode" generated properties.</summary>

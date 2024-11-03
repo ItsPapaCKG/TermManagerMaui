@@ -13,8 +13,8 @@
             <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="0">
                 <Entry TextColor="White" FontAttributes="None" Text="{Binding CourseEdit.Name}"></Entry>
                 <Grid ColumnDefinitions="*,*">
-                    <DatePicker Grid.Column="0" FontAttributes="None" TextColor="White" Date="{Binding CourseEdit.Start}"></DatePicker>
-                    <DatePicker Grid.Column="1" FontAttributes="None" TextColor="White" Date="{Binding CourseEdit.End}"></DatePicker>
+                    <DatePicker Grid.Column="0" FontAttributes="None" TextColor="White" Date="{Binding Start}" DateSelected="DatePicker_DateSelected"></DatePicker>
+                    <DatePicker Grid.Column="1" FontAttributes="None" TextColor="White" Date="{Binding End}" DateSelected="DatePicker_DateSelected_1"></DatePicker>
                 </Grid>
                 
                 <Picker TextColor="White" FontAttributes="Bold" SelectedItem="{Binding CourseEdit.Status}">

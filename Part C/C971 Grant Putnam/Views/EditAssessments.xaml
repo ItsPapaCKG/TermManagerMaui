@@ -34,8 +34,8 @@
                     <Entry IsEnabled="{Binding IncludeObjectiveAssessment}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding ObjectiveAssessmentName}"></Entry>
 
                     <Grid Grid.Row="2" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand">
-                        <DatePicker Grid.Column="0" IsEnabled="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Date="{Binding ObjectiveAssessmentStart}"/>
-                        <DatePicker Grid.Column="1" IsEnabled="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Date="{Binding ObjectiveAssessmentEnd}"/>
+                        <DatePicker Grid.Column="0" IsEnabled="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Date="{Binding ObjectiveAssessmentStart}" DateSelected="DatePicker_ObjStart"/>
+                        <DatePicker Grid.Column="1" IsEnabled="{Binding IncludeObjectiveAssessment, Mode=TwoWay}" Date="{Binding ObjectiveAssessmentEnd}" DateSelected="DatePicker_ObjEnd"/>
                     </Grid>
 
                     <Grid ColumnDefinitions="Auto,*" Grid.Row="3">
@@ -54,8 +54,8 @@
                     <Entry IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Grid.Row="1" Placeholder="Assessment Name" Text="{Binding PerformanceAssessmentName}"></Entry>
 
                     <Grid Grid.Row="2" ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand">
-                        <DatePicker Grid.Column="0" IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Date="{Binding PerformanceAssessmentStart}"/>
-                        <DatePicker Grid.Column="1" IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Date="{Binding PerformanceAssessmentEnd}"/>
+                        <DatePicker Grid.Column="0" IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Date="{Binding PerformanceAssessmentStart}" DateSelected="DatePicker_PerStart"/>
+                        <DatePicker Grid.Column="1" IsEnabled="{Binding IncludePerformanceAssessment, Mode=TwoWay}" Date="{Binding PerformanceAssessmentEnd}" DateSelected="DatePicker_PerEnd"/>
                     </Grid>
 
                     <Grid ColumnDefinitions="Auto,*" Grid.Row="3">

@@ -80,6 +80,10 @@ namespace C971_Grant_Putnam.ViewModels
                 ObjectiveAssessmentStart = receivedObjective.Start;
                 ObjectiveAssessmentEnd = receivedObjective.End;
                 ObjectiveAssessmentNotify = receivedObjective.Notify;
+            } else
+            {
+                ObjectiveAssessmentStart = DateTime.Today;
+                ObjectiveAssessmentEnd = DateTime.Today.AddDays(1);
             }
             
             if (receivedPerformance is not null)
@@ -89,6 +93,11 @@ namespace C971_Grant_Putnam.ViewModels
                 PerformanceAssessmentStart = receivedPerformance.Start;
                 PerformanceAssessmentEnd = receivedPerformance.End;
                 PerformanceAssessmentNotify = receivedPerformance.Notify;
+            }
+            else
+            {
+                PerformanceAssessmentStart = DateTime.Today;
+                PerformanceAssessmentEnd = DateTime.Today.AddDays(1);
             }
         }
 
@@ -153,7 +162,23 @@ namespace C971_Grant_Putnam.ViewModels
             }
         }
 
-        [RelayCommand]
+        public bool CanSaveAssessments()
+        {
+            if (!DateEvaluator.AreDatesValid(ObjectiveAssessmentStart, ObjectiveAssessmentEnd))
+            {
+                return false;
+            }
+
+            if (!DateEvaluator.AreDatesValid(PerformanceAssessmentStart, PerformanceAssessmentEnd))
+            {
+                return false;
+            }
+
+            return true;
+
+        }
+
+        [RelayCommand(CanExecute = nameof(CanSaveAssessments))]
         async Task SaveAssessments()
         {
             var oldObj = Assessments.FirstOrDefault(x => x.Type == "OA", null);
@@ -264,5 +289,7 @@ namespace C971_Grant_Putnam.ViewModels
                 
             }
         }
+
+
     }
 }
